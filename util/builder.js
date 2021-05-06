@@ -6,6 +6,7 @@ const reflect = require('@alumna/reflect');
 function Builder() {
   this._outputDir = process.env.OUTPUT_DIR;
   this._gitBranch = process.env.GIT_BRANCH;
+  this._gitCommitMessage = process.env.GIT_BRANCH;
   this._timeout = Number.parseInt(process.env.BUILD_TIMEOUT) ?? 30000;
 
   this._timer = null;
@@ -42,7 +43,10 @@ Builder.prototype.build = async function () {
   if (this._gitBranch) {
     execSync(`git checkout ${this._gitBranch}`, option);
     execSync('git add .', option);
-    execSync('git commit -m "Sync CMS"', option);
+  }
+
+  if (this._gitCommitMessage) {
+    execSync(`git commit -m "${this._gitCommitMessage}"`, option);
     execSync('git push', option);
   }
 

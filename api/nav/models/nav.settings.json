@@ -24,6 +24,11 @@
       "required": true,
       "pluginOptions": {}
     },
+    "home": {
+      "type": "component",
+      "repeatable": false,
+      "component": "nav.section"
+    },
     "document": {
       "type": "component",
       "repeatable": false,
