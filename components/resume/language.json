@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_resume_languages",
+  "info": {
+    "name": "language",
+    "icon": "language",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "English"
+    },
+    "level": {
+      "type": "string",
+      "default": "Native",
+      "required": true
+    }
+  }
+}

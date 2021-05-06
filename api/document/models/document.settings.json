@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents",
+  "info": {
+    "name": "document",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sites": {
+      "collection": "site"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "category": {
+      "model": "category"
+    },
+    "contributors": {
+      "collection": "contributor"
+    },
+    "weight": {
+      "type": "integer",
+      "default": 999
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

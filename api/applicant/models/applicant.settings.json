@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applicants",
+  "info": {
+    "name": "applicant",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "media": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "job": {
+      "model": "job"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "InReview",
+        "Interview",
+        "Offered",
+        "Hired",
+        "Reject"
+      ]
+    }
+  }
+}

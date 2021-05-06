@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "name": "article",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sites": {
+      "collection": "site"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "tags": {
+      "collection": "tag"
+    },
+    "contributors": {
+      "collection": "contributor"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

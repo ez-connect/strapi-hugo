@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_resume_educations",
+  "info": {
+    "name": "education",
+    "icon": "newspaper",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "degree": {
+      "type": "string",
+      "required": true,
+      "default": "MSc in Computer Science"
+    },
+    "university": {
+      "type": "string",
+      "required": true,
+      "default": "Imperial College London"
+    },
+    "dates": {
+      "type": "string",
+      "required": true,
+      "default": "2006 - 2010"
+    }
+  }
+}

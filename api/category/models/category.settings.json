@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "name": "category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "parent": {
+      "model": "category"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "path": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

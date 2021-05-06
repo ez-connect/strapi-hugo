@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resumes",
+  "info": {
+    "name": "resume",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "tel": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "webpage": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "richtext",
+      "required": true,
+      "default": "A bio should quickly explain your most important accomplishments, traits and qualifications during your career development."
+    },
+    "social": {
+      "type": "component",
+      "repeatable": false,
+      "component": "resume.social"
+    },
+    "experiences": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.experience"
+    },
+    "projects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.project"
+    },
+    "skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.skill"
+    },
+    "educations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.education"
+    },
+    "awards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.award"
+    },
+    "languages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "resume.language"
+    },
+    "interests": {
+      "type": "richtext",
+      "default": "- Climbing\n- Snowboarding\n- Photography\n- Travelling"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

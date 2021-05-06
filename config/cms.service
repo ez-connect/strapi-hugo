@@ -1,0 +1,12 @@
+[Unit]
+Description=CMS Server
+After=network.target
+
+[Service]
+User=dev
+# Environment=REDIS_HOST=localhost
+WorkingDirectory=/opt/server/cms
+ExecStart=/opt/server/cms/node_modules/.bin/strapi start
+
+[Install]
+WantedBy=multi-user.target

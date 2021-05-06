@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_resume_socials",
+  "info": {
+    "name": "social",
+    "icon": "folder"
+  },
+  "options": {},
+  "attributes": {
+    "github": {
+      "type": "string"
+    },
+    "gitlab": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    }
+  }
+}

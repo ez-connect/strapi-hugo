@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_nav_sections",
+  "info": {
+    "name": "section",
+    "icon": "external-link-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "enable": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.link"
+    }
+  }
+}

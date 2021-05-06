@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_resume_awards",
+  "info": {
+    "name": "award",
+    "icon": "award",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "Award Lorem Ipsum"
+    },
+    "detail": {
+      "type": "richtext",
+      "default": "Microsoft lorem ipsum"
+    },
+    "date": {
+      "type": "string",
+      "required": true,
+      "default": "2019"
+    }
+  }
+}
