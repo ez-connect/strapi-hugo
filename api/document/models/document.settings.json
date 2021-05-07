@@ -24,9 +24,6 @@
     "category": {
       "model": "category"
     },
-    "contributors": {
-      "collection": "contributor"
-    },
     "weight": {
       "type": "integer",
       "default": 999

@@ -1,39 +1,48 @@
 'use strict';
 
-const { isDraft } = require('strapi-utils').contentTypes;
-
-const { fsutil } = require('../../../util/fsutil');
-const { writer } = require('../../../util/writer');
+const {
+  ContentType,
+  ModelLifeCycle,
+  fsutil,
+  writer,
+} = require('../../../util');
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#lifecycle-hooks)
  * to customize this model
  */
 
-let _before; // the old document
+const _lifecycle = new ModelLifeCycle(
+  'category',
+  ContentType.category,
+  'document',
+);
 
-function _save(result) {
-  if (isDraft(result, strapi.models.category)) return;
-  writer.writeCategory(result);
+function _addMenu(result) {
+  result.menu = {
+    document: {
+      parent: result.category?.title ?? '',
+    },
+  };
 }
 
 module.exports = {
   lifecycles: {
     afterCreate: async (result, data) => {
-      _save(result);
+      _addMenu(result);
+      _lifecycle.afterCreate(result, data);
     },
     beforeUpdate: async (params, data) => {
-      let ctx = { params };
-      _before = await strapi.controllers.category.findOne(ctx);
+      _lifecycle.beforeUpdate(params, data); // can't bind this
     },
-
     afterUpdate: async (result, params, data) => {
-      if (_before && _before.path != result.path) {
-        console.log('Update category path:', _before.path, result.path);
-        fsutil.renameCategory(_before, result);
+      const before = _lifecycle.getBefore();
+      if (before && before.path != result.path) {
+        console.log('Update category path:', before.path, result.path);
+        fsutil.renameCategory('document', before, result);
 
         // Update
-        if (_before && _before.path != result.path) {
+        if (before && before.path != result.path) {
           const ctx = { params: { category: result.id } };
           let docs = await strapi.controllers.document.find(ctx);
 
@@ -43,7 +52,8 @@ module.exports = {
         }
       }
 
-      _save(result);
+      _addMenu(result);
+      _lifecycle.afterUpdate(result, params, data);
     },
   },
 };

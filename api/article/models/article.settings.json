@@ -24,9 +24,6 @@
     "tags": {
       "collection": "tag"
     },
-    "contributors": {
-      "collection": "contributor"
-    },
     "content": {
       "type": "richtext"
     }

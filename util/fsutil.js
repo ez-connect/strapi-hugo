@@ -17,9 +17,9 @@ FSUtil.prototype.getContentSlug = function (doc) {
   return `${slugify(doc.title, { lower: true })}-${doc.id}`;
 };
 
-FSUtil.prototype.getCategoryPath = function (doc) {
+FSUtil.prototype.getCategoryPath = function (section, doc) {
   const parent = doc.parent?.path ?? '';
-  return path.join(this._outputDir, 'content', 'document', parent, doc.path);
+  return path.join(this._outputDir, 'content', section, parent, doc.path);
 };
 
 FSUtil.prototype.getDataPath = function (name) {
@@ -58,19 +58,19 @@ FSUtil.prototype.rmContent = function (section, doc) {
   builder.queueBuild();
 };
 
-FSUtil.prototype.renameCategory = function (old, doc) {
+FSUtil.prototype.renameCategory = function (section, old, doc) {
   if (old) {
-    const p = this.getCategoryPath(old);
+    const p = this.getCategoryPath(section, old);
     if (fs.existsSync(p)) {
-      fs.renameSync(p, this.getCategoryPath(doc));
+      fs.renameSync(p, this.getCategoryPath(section, doc));
     }
   }
 
   builder.queueBuild();
 };
 
-FSUtil.prototype.writeCategory = function (doc, data) {
-  const dir = this.getCategoryPath(doc);
+FSUtil.prototype.writeCategory = function (section, doc, data) {
+  const dir = this.getCategoryPath(section, doc);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

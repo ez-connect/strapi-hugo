@@ -1,8 +1,4 @@
-const path = require('path');
-const fs = require('fs');
-
 const objectScan = require('object-scan');
-const slugify = require('slugify');
 const yaml = require('yaml');
 
 const { fsutil } = require('./fsutil');
@@ -42,6 +38,26 @@ function Writer() {
 
 Writer.prototype.normalize = function (result) {
   const doc = JSON.parse(JSON.stringify(result)); // deep copy
+
+  // Tags
+  if (doc.tags) {
+    doc.tags = doc.tags.map((e) => e.title);
+  }
+
+  // Creator
+  if (doc.created_by) {
+    const { firstname, lastname, email } = doc.created_by;
+    doc.createdby = { firstname, lastname, email };
+    delete doc.created_by;
+  }
+
+  // Updater
+  if (doc.updated_by) {
+    const { firstname, lastname, email } = doc.updated_by;
+    doc.updatedby = { firstname, lastname, email };
+    delete doc.updated_by;
+  }
+
   for ([k, v] of Object.entries(_field)) {
     objectScan([`**.${k}`], {
       filterFn: function ({ parent, property }) {
@@ -54,49 +70,10 @@ Writer.prototype.normalize = function (result) {
     })(doc);
   }
 
-  // Tags
-  if (doc.tags) {
-    doc.tags = doc.tags.map((e) => e.title);
-  }
-
-  // Contributors
-  if (doc.contributors) {
-    doc.contributors = doc.contributors.map((e) => e.title);
-  }
-
   return doc;
 };
 
-Writer.prototype.writeCategory = function (result) {
-  const frontmatter = {
-    title: result.title,
-    menu: {
-      document: {
-        parent: result.parent ?? '',
-      },
-    },
-    data: result.created_at,
-    lastmod: result.lastmod,
-  };
-
-  buf = [];
-  buf.push('---\n');
-  buf.push(yaml.stringify(frontmatter, { sortMapEntries: true }));
-  buf.push('---\n\n');
-
-  if (result.content) {
-    buf.push(result.content);
-  }
-
-  fsutil.writeCategory(result, buf.join(''));
-};
-
-Writer.prototype.writeData = function (name, result) {
-  const doc = this.normalize(result);
-  fsutil.writeData(name, yaml.stringify(doc, { sortMapEntries: true }));
-};
-
-Writer.prototype.writeContent = function (section, result) {
+Writer.prototype.getMarkdown = function (result) {
   const doc = this.normalize(result);
   const frontmatter = {};
   for ([k, v] of Object.entries(doc)) {
@@ -114,7 +91,22 @@ Writer.prototype.writeContent = function (section, result) {
     buf.push(doc.content);
   }
 
-  fsutil.writeContent(section, result, buf.join(''));
+  return buf.join('');
+};
+
+Writer.prototype.writeCategory = function (section, result) {
+  const buf = this.getMarkdown(result);
+  fsutil.writeCategory(section, result, buf);
+};
+
+Writer.prototype.writeData = function (name, result) {
+  const doc = this.normalize(result);
+  fsutil.writeData(name, yaml.stringify(doc, { sortMapEntries: true }));
+};
+
+Writer.prototype.writeContent = function (section, result) {
+  const buf = this.getMarkdown(result);
+  fsutil.writeContent(section, result, buf);
 };
 
 module.exports = {
