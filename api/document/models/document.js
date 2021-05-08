@@ -29,8 +29,9 @@ module.exports = {
       _addMenu(result);
       _lifecycle.afterCreate(result, data);
     },
-    beforeUpdate: _lifecycle.beforeUpdate,
-
+    beforeUpdate: async (params, data) => {
+      _lifecycle.beforeUpdate(params, data); // can't bind this
+    },
     afterUpdate: async (result, _params, data) => {
       _addMenu(result);
       _lifecycle.afterUpdate(result, data);

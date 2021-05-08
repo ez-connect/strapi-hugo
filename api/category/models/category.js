@@ -26,6 +26,16 @@ function _addMenu(result) {
   };
 }
 
+function _addDocumentMenu(result) {
+  const category = result.category;
+  result.menu = {
+    document: {
+      parent: category?.title ?? '',
+      identifier: result.id,
+    },
+  };
+}
+
 module.exports = {
   lifecycles: {
     afterCreate: async (result, data) => {
@@ -47,6 +57,7 @@ module.exports = {
           let docs = await strapi.controllers.document.find(ctx);
 
           for (const doc of docs) {
+            _addDocumentMenu(doc);
             writer.writeContent('document', doc);
           }
         }
