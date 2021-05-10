@@ -6,7 +6,7 @@ const reflect = require('@alumna/reflect');
 function Builder() {
   this._outputDir = process.env.OUTPUT_DIR;
   this._gitBranch = process.env.GIT_BRANCH;
-  this._gitCommitMessage = process.env.GIT_BRANCH;
+  this._gitCommitMessage = process.env.GIT_COMMIT_MSG;
   this._timeout = Number.parseInt(process.env.BUILD_TIMEOUT) ?? 30000;
 
   this._timer = null;
