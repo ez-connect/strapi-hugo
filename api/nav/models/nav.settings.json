@@ -38,6 +38,21 @@
       "type": "component",
       "repeatable": false,
       "component": "nav.section"
+    },
+    "job": {
+      "type": "component",
+      "repeatable": false,
+      "component": "nav.section"
+    },
+    "resume": {
+      "type": "component",
+      "repeatable": false,
+      "component": "nav.section"
+    },
+    "applicant": {
+      "type": "component",
+      "repeatable": false,
+      "component": "nav.section"
     }
   }
 }
