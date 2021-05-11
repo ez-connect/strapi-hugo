@@ -12,21 +12,29 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 6
     },
-    "description": {
-      "type": "text"
+    "email": {
+      "type": "email",
+      "required": true,
+      "minLength": 3
     },
-    "media": {
+    "phone": {
+      "type": "string",
+      "required": true,
+      "minLength": 9
+    },
+    "cv": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "files"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true,
+      "pluginOptions": {}
     },
     "job": {
       "model": "job"
@@ -41,6 +49,11 @@
         "Hired",
         "Reject"
       ]
+    },
+    "content": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 10
     }
   }
 }
