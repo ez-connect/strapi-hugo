@@ -12,25 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "logo": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
-    },
     "copyright": {
-      "type": "text"
+      "type": "richtext",
+      "default": "Copyright © Ez-Connect 2021 . All rights reserved.",
+      "required": true
     },
-    "links": {
-      "type": "component",
-      "repeatable": true,
-      "component": "common.link"
+    "credit": {
+      "type": "richtext",
+      "default": "Powered by [Hugo](https://gohugo.io) and [Ez-Connect](https://github.com/ez-connect/hugo-theme)"
     }
   }
 }

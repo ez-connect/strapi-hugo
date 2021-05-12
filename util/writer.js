@@ -5,7 +5,7 @@ const { fsutil } = require('./fsutil');
 
 const _field = {
   id: '',
-  sites: '', // not support now
+  webs: '', // not support now
   category: '',
   created_by: '',
   updated_by: '',

@@ -1,18 +1,31 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "sites",
   "info": {
-    "name": "site"
+    "name": "site",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "name": {
+    "site": {
       "type": "string",
+      "default": "Ez-Connect",
       "required": true
+    },
+    "cms": {
+      "type": "string",
+      "required": true,
+      "default": "http://localhost:1337"
+    },
+    "contact": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.contact"
     }
   }
 }

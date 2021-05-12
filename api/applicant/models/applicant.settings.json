@@ -11,6 +11,9 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "webs": {
+      "collection": "web"
+    },
     "title": {
       "type": "string",
       "required": true,
@@ -25,16 +28,6 @@
       "type": "string",
       "required": true,
       "minLength": 9
-    },
-    "cv": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files"
-      ],
-      "plugin": "upload",
-      "required": true,
-      "pluginOptions": {}
     },
     "job": {
       "model": "job"

@@ -11,6 +11,9 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "webs": {
+      "collection": "web"
+    },
     "title": {
       "type": "string",
       "required": true

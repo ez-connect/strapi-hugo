@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_common_contacts",
+  "info": {
+    "name": "contact",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "tel": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}
