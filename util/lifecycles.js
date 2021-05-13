@@ -21,6 +21,9 @@ ModelLifeCycle.createLifeCycles = (content, type, section) => {
     afterUpdate: async (result, params, data) => {
       _lifecycle.afterUpdate(result, params, data);
     },
+    afterDelete: (result, params) => {
+      _lifecycle.afterDelete(result, params);
+    },
   };
 };
 
@@ -64,6 +67,10 @@ ModelLifeCycle.prototype.beforeUpdate = async function (params, _data) {
 
 ModelLifeCycle.prototype.afterUpdate = function (result, _params, _data) {
   this._save(result);
+};
+
+ModelLifeCycle.prototype.afterDelete = function (result, _params) {
+  fsutil.rmContent(this._section, result);
 };
 
 module.exports = {

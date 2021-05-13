@@ -11,6 +11,9 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "webs": {
+      "collection": "web"
+    },
     "title": {
       "type": "string",
       "required": true,
@@ -26,16 +29,6 @@
       "required": true,
       "minLength": 9
     },
-    "cv": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files"
-      ],
-      "plugin": "upload",
-      "required": true,
-      "pluginOptions": {}
-    },
     "job": {
       "model": "job"
     },
@@ -48,7 +41,8 @@
         "Offered",
         "Hired",
         "Reject"
-      ]
+      ],
+      "default": "New"
     },
     "content": {
       "type": "richtext",

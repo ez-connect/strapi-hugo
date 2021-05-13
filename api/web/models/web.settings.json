@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "webs",
+  "info": {
+    "name": "web",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

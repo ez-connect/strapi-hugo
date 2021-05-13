@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_common_jumbotrons",
+  "info": {
+    "name": "jumbotron",
+    "icon": "band-aid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Blog"
+    },
+    "background": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}
