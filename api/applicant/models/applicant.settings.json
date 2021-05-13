@@ -41,7 +41,8 @@
         "Offered",
         "Hired",
         "Reject"
-      ]
+      ],
+      "default": "New"
     },
     "content": {
       "type": "richtext",
