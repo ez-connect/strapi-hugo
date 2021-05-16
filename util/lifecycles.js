@@ -9,8 +9,8 @@ const ContentType = {
   single: 3,
 };
 
-ModelLifeCycle.createLifeCycles = (content, type, section) => {
-  const _lifecycle = new ModelLifeCycle(content, type, section);
+ModelLifeCycle.createLifeCycles = (content, type, section, updaterFn = null) => {
+  const _lifecycle = new ModelLifeCycle(content, type, section, updaterFn);
   return {
     afterCreate: async (result, data) => {
       _lifecycle.afterCreate(result, data);
@@ -27,10 +27,11 @@ ModelLifeCycle.createLifeCycles = (content, type, section) => {
   };
 };
 
-function ModelLifeCycle(content, type, section) {
+function ModelLifeCycle(content, type, section, updaterFn = null) {
   this._content = content;
   this._type = type;
   this._section = section;
+  this._updaterFn = updaterFn; // update model & result callback
 
   this._before = null;
 }
@@ -54,7 +55,8 @@ ModelLifeCycle.prototype.getBefore = function () {
 };
 
 ModelLifeCycle.prototype.afterCreate = function (result, _data) {
-  this._save(result);
+  const data = this._updaterFn ? this._updaterFn(result) :  result;
+  this._save(data);
 };
 
 ModelLifeCycle.prototype.beforeUpdate = async function (params, _data) {
@@ -66,7 +68,8 @@ ModelLifeCycle.prototype.beforeUpdate = async function (params, _data) {
 };
 
 ModelLifeCycle.prototype.afterUpdate = function (result, _params, _data) {
-  this._save(result);
+  const data = this._updaterFn ? this._updaterFn(result) :  result;
+  this._save(data);
 };
 
 ModelLifeCycle.prototype.afterDelete = function (result, _params) {

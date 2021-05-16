@@ -7,25 +7,17 @@ const { ContentType, ModelLifeCycle } = require('../../../util');
  * to customize this model
  */
 
-// Add the menu prop
 function _update(result) {
-  const category = result.category;
-  // It doesn't has `menu`, no need to copy
-  result.menu = {
-    document: {
-      parent: category?.title ?? '',
-      identifier: result.id,
-    },
-  };
-
-  return result;
+  const data = JSON.parse(JSON.stringify(result));
+  data.title = result.user.firstname
+  return data;
 }
 
 module.exports = {
   lifecycles: ModelLifeCycle.createLifeCycles(
-    'document',
+    'contributor',
     ContentType.collection,
-    'document',
+    'contributor',
     _update,
   ),
 };

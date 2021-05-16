@@ -17,15 +17,25 @@
       "default": "Ez-Connect",
       "required": true
     },
-    "cms": {
-      "type": "string",
-      "required": true,
-      "default": "http://localhost:1337"
-    },
     "contact": {
       "type": "component",
       "repeatable": false,
       "component": "common.contact"
+    },
+    "signIn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.endpoint"
+    },
+    "applyJob": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.endpoint"
+    },
+    "forgotPassword": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.endpoint"
     }
   }
 }

@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  async auth(ctx) {
+  async index(ctx) {
     return 'Allowed';
   },
 };

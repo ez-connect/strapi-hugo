@@ -14,6 +14,9 @@
     "webs": {
       "collection": "web"
     },
+    "contributors": {
+      "collection": "contributor"
+    },
     "title": {
       "type": "string",
       "required": true

@@ -8,8 +8,9 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "webs": {
       "collection": "web"
@@ -42,12 +43,17 @@
         "Hired",
         "Reject"
       ],
-      "default": "New"
+      "default": "New",
+      "private": true
     },
     "content": {
       "type": "richtext",
       "required": true,
       "minLength": 10
+    },
+    "review": {
+      "type": "richtext",
+      "private": true
     }
   }
 }

@@ -1,9 +1,8 @@
 {
-  "kind": "singleType",
-  "collectionName": "profiles",
+  "kind": "collectionType",
+  "collectionName": "contributors",
   "info": {
-    "name": "profile",
-    "description": ""
+    "name": "contributor"
   },
   "options": {
     "increments": true,
@@ -20,13 +19,14 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
-      "required": false,
+      "required": true,
       "pluginOptions": {}
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }

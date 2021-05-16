@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_common_endpoints",
+  "info": {
+    "name": "endpoint",
+    "icon": "route"
+  },
+  "options": {},
+  "attributes": {
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "HEAD",
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE"
+      ],
+      "default": "POST",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "default": "http://localhost:1337",
+      "required": true
+    }
+  }
+}
