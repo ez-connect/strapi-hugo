@@ -19,6 +19,8 @@ Builder.prototype.setOutputDir = function (value) {
 };
 
 Builder.prototype.queueBuild = function () {
+  if (!this._gitTimeout) return;
+
   clearTimeout(this._buildTimer);
   if (this._gitTimeout) {
     this._gitTimer = setTimeout(this.push.bind(this), this._gitTimeout);

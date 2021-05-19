@@ -1,6 +1,6 @@
 'use strict';
 
-const { ContentType, ModelLifeCycle } = require('../../../util');
+const { ContentType, ModelLifeCycle, writer } = require('../../../util');
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#lifecycle-hooks)
@@ -8,24 +8,26 @@ const { ContentType, ModelLifeCycle } = require('../../../util');
  */
 
 // Add the menu prop
-function _update(result) {
+async function _update(result) {
+  const data = writer.deepClone(result);
   const category = result.category;
   // It doesn't has `menu`, no need to copy
-  result.menu = {
+  data.menu = {
     document: {
       parent: category?.title ?? '',
       identifier: result.id,
     },
   };
 
-  return result;
+
+  return data;
 }
 
 module.exports = {
-  lifecycles: ModelLifeCycle.createLifeCycles(
-    'document',
-    ContentType.collection,
-    'document',
-    _update,
-  ),
+  lifecycles: ModelLifeCycle.createLifeCycles({
+    content: 'document',
+    type: ContentType.collection,
+    section: 'document',
+    updaterFn: _update,
+  }),
 };

@@ -8,5 +8,9 @@ const { ContentType, ModelLifeCycle } = require('../../../util');
  */
 
 module.exports = {
-  lifecycles: ModelLifeCycle.createLifeCycles('resume', ContentType.collection, 'resume'),
+  lifecycles: ModelLifeCycle.createLifeCycles({
+    content: 'resume',
+    type: ContentType.collection,
+    section: 'resume',
+  }),
 };

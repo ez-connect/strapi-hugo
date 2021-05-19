@@ -1,6 +1,6 @@
 'use strict';
 
-const { ContentType, ModelLifeCycle } = require('../../../util');
+const { ContentType, ModelLifeCycle, writer } = require('../../../util');
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#lifecycle-hooks)
@@ -8,7 +8,7 @@ const { ContentType, ModelLifeCycle } = require('../../../util');
  */
 
 function _update(result) {
-  const data = JSON.parse(JSON.stringify(result)); // copy
+  const data = writer.deepClone(result);
   if (data.job) {
     data.job = data.job.title;
   }
@@ -18,10 +18,10 @@ function _update(result) {
 }
 
 module.exports = {
-  lifecycles: ModelLifeCycle.createLifeCycles(
-    'applicant',
-    ContentType.collection,
-    'applicant',
-    _update,
-  ),
+  lifecycles: ModelLifeCycle.createLifeCycles({
+    content: 'applicant',
+    type: ContentType.collection,
+    section: 'applicant',
+    updaterFn: _update,
+  }),
 };

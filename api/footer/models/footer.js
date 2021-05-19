@@ -8,5 +8,9 @@ const { ContentType, ModelLifeCycle } = require('../../../util');
  */
 
 module.exports = {
-  lifecycles: ModelLifeCycle.createLifeCycles('footer', ContentType.single, 'footer'),
+  lifecycles: ModelLifeCycle.createLifeCycles({
+    content: 'footer',
+    type: ContentType.single,
+    section: 'footer',
+  }),
 };

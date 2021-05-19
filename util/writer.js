@@ -36,6 +36,11 @@ function Writer() {
   this._outputDir = process.env.OUTPUT_DIR;
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+Writer.prototype.deepClone = function (result) {
+  return JSON.parse(JSON.stringify(result));
+};
+
 Writer.prototype.normalize = function (result) {
   const doc = JSON.parse(JSON.stringify(result)); // deep copy
 
@@ -44,18 +49,35 @@ Writer.prototype.normalize = function (result) {
     doc.tags = doc.tags.map((e) => e.title);
   }
 
-  // Creator
-  if (doc.created_by) {
-    const { firstname, lastname, email } = doc.created_by;
-    doc.createdby = { firstname, lastname, email };
-    delete doc.created_by;
-  }
+  // // Creator
+  // if (doc.created_by) {
+  //   const { firstname, lastname, email } = doc.created_by;
+  //   doc.createdby = { firstname, lastname, email };
+  //   delete doc.created_by;
+  // }
 
-  // Updater
+  // // Updater
+  // if (doc.updated_by) {
+  //   const { firstname, lastname, email } = doc.updated_by;
+  //   doc.updatedby = { firstname, lastname, email };
+  //   delete doc.updated_by;
+  // }
+
+  // Authors
+  doc.authors = [];
+  if (doc.created_by) {
+    doc.authors.push({
+      userID: doc.created_by.id,
+      name: doc.created_by.firstname,
+    });
+  }
   if (doc.updated_by) {
-    const { firstname, lastname, email } = doc.updated_by;
-    doc.updatedby = { firstname, lastname, email };
-    delete doc.updated_by;
+    if (doc.created_by.id != doc.updated_by.id) {
+      doc.authors.push({
+        userID: doc.updated_by.id,
+        name: doc.updated_by.firstname,
+      });
+    }
   }
 
   for ([k, v] of Object.entries(_field)) {
