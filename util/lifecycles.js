@@ -22,9 +22,9 @@ ModelLifeCycle.createLifeCycles = ({
     updaterFn,
   });
   return {
-    beforeCreate: async (data) => {
-      _lifecycle.beforeCreate(data);
-    },
+    // beforeCreate: async (data) => {
+    //   _lifecycle.beforeCreate(data);
+    // },
     afterCreate: async (result, data) => {
       _lifecycle.afterCreate(result, data);
     },
