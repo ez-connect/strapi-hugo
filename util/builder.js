@@ -7,9 +7,11 @@ function Builder() {
   this._outputDir = process.env.OUTPUT_DIR;
   this._gitBranch = process.env.GIT_BRANCH;
   this._gitCommitMessage = process.env.GIT_COMMIT_MSG;
-  this._timeout = Number.parseInt(process.env.BUILD_TIMEOUT) ?? 30000;
+  this._buildTimeout = Number.parseInt(process.env.BUILD_TIMEOUT);
+  this._gitTimeout = Number.parseInt(process.env.GIT_TIMEOUT);
 
-  this._timer = null;
+  this._buildTimer = null;
+  this._gitTimer = null;
 }
 
 Builder.prototype.setOutputDir = function (value) {
@@ -17,9 +19,33 @@ Builder.prototype.setOutputDir = function (value) {
 };
 
 Builder.prototype.queueBuild = function () {
-  clearTimeout(this._timer);
-  this._timer = setTimeout(this.build.bind(this), this._timeout);
+  if (!this._gitTimeout) return;
+
+  clearTimeout(this._buildTimer);
+  if (this._gitTimeout) {
+    this._gitTimer = setTimeout(this.push.bind(this), this._gitTimeout);
+  }
+
+  if (this._buildTimeout) {
+    this._buildTimer = setTimeout(this.build.bind(this), this._buildTimeout);
+  }
 };
+
+Builder.prototype.push = async function () {
+  console.log('CMS push to Git');
+  const option = { cwd: this._outputDir };
+
+  if (this._gitBranch) {
+    execSync(`git checkout ${this._gitBranch}`, option);
+    execSync('git add .', option);
+  }
+
+  if (this._gitCommitMessage) {
+    execSync(`git commit -m "${this._gitCommitMessage}"`, option);
+    execSync('git push', option);
+  }
+};
+
 Builder.prototype.build = async function () {
   console.log('CMS build:', this._outputDir);
 
@@ -37,20 +63,9 @@ Builder.prototype.build = async function () {
     exclude: ['.gitkeep'],
   });
 
-  // Git
-  const option = { cwd: this._outputDir };
-
-  if (this._gitBranch) {
-    execSync(`git checkout ${this._gitBranch}`, option);
-    execSync('git add .', option);
-  }
-
-  if (this._gitCommitMessage) {
-    execSync(`git commit -m "${this._gitCommitMessage}"`, option);
-    execSync('git push', option);
-  }
-
   // Hugo
+  const option = { cwd: this._outputDir };
+  execSync('rm -rf public', option);
   execSync('hugo --gc --minify', option);
 };
 

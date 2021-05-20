@@ -9,9 +9,22 @@ const ContentType = {
   single: 3,
 };
 
-ModelLifeCycle.createLifeCycles = (content, type, section) => {
-  const _lifecycle = new ModelLifeCycle(content, type, section);
+ModelLifeCycle.createLifeCycles = ({
+  content,
+  type,
+  section,
+  updaterFn = null,
+}) => {
+  const _lifecycle = new ModelLifeCycle({
+    content,
+    type,
+    section,
+    updaterFn,
+  });
   return {
+    // beforeCreate: async (data) => {
+    //   _lifecycle.beforeCreate(data);
+    // },
     afterCreate: async (result, data) => {
       _lifecycle.afterCreate(result, data);
     },
@@ -27,10 +40,11 @@ ModelLifeCycle.createLifeCycles = (content, type, section) => {
   };
 };
 
-function ModelLifeCycle(content, type, section) {
+function ModelLifeCycle({ content, type, section, updaterFn = null }) {
   this._content = content;
   this._type = type;
   this._section = section;
+  this._updaterFn = updaterFn; // update model & result callback
 
   this._before = null;
 }
@@ -49,24 +63,43 @@ ModelLifeCycle.prototype._save = function (result) {
   }
 };
 
+// ModelLifeCycle.prototype.beforeCreate = function (data) {
+// };
+
 ModelLifeCycle.prototype.getBefore = function () {
   return this._before;
 };
 
-ModelLifeCycle.prototype.afterCreate = function (result, _data) {
-  this._save(result);
+ModelLifeCycle.prototype.afterCreate = function (result, data) {
+  if (this._updaterFn) {
+    this._updaterFn(result).then((res) => {
+      this._save(res);
+    });
+  } else {
+    this._save(data);
+  }
 };
 
-ModelLifeCycle.prototype.beforeUpdate = async function (params, _data) {
+ModelLifeCycle.prototype.beforeUpdate = async function (params, data) {
   let ctx = { params };
   if (this._type != ContentType.single) {
     this._before = await strapi.controllers[this._content].findOne(ctx); // previous version, `data` params is the new one
+    if (this._updaterFn) {
+      this._before = await this._updaterFn(this._before);
+    }
   }
+
   fsutil.rmContent(this._section, this._before);
 };
 
-ModelLifeCycle.prototype.afterUpdate = function (result, _params, _data) {
-  this._save(result);
+ModelLifeCycle.prototype.afterUpdate = function (result, _params, data) {
+  if (this._updaterFn) {
+    this._updaterFn(result).then((doc) => {
+      this._save(doc);
+    });
+  } else {
+    this._save(result);
+  }
 };
 
 ModelLifeCycle.prototype.afterDelete = function (result, _params) {

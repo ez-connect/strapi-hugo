@@ -1,3 +1,3 @@
-# Strapi application
+# CMS
 
-A quick description of your strapi application
+Built with [Strapi](https://strapi.io)

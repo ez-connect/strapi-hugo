@@ -1,14 +1,14 @@
 {
-  "kind": "singleType",
-  "collectionName": "profiles",
+  "kind": "collectionType",
+  "collectionName": "contributors",
   "info": {
-    "name": "profile",
+    "name": "contributor",
     "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -20,13 +20,14 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
-      "required": false,
+      "required": true,
       "pluginOptions": {}
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }

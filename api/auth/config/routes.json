@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/auth",
+      "handler": "auth.index",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
