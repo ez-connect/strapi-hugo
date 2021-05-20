@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "contributors",
   "info": {
-    "name": "contributor"
+    "name": "contributor",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

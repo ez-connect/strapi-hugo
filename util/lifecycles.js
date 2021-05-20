@@ -84,7 +84,11 @@ ModelLifeCycle.prototype.beforeUpdate = async function (params, data) {
   let ctx = { params };
   if (this._type != ContentType.single) {
     this._before = await strapi.controllers[this._content].findOne(ctx); // previous version, `data` params is the new one
+    if (this._updaterFn) {
+      this._before = await this._updaterFn(this._before);
+    }
   }
+
   fsutil.rmContent(this._section, this._before);
 };
 

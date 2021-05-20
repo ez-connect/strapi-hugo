@@ -7,7 +7,7 @@ const { ContentType, ModelLifeCycle, writer } = require('../../../util');
  * to customize this model
  */
 
-function _update(result) {
+async function _update(result) {
   const data = writer.deepClone(result);
   if (data.job) {
     data.job = data.job.title;

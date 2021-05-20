@@ -7,17 +7,20 @@ const { ContentType, ModelLifeCycle } = require('../../../util');
  * to customize this model
  */
 
-function _update(result) {
+async function _update(result) {
   const data = JSON.parse(JSON.stringify(result));
-  data.title = result.user.firstname
+  const { firstname, lastname, email } = data.user;
+  data.title = firstname;
+  data.id = result.user.id; // use user id
+  data.user = { firstname, lastname, email };
   return data;
 }
 
 module.exports = {
-  lifecycles: ModelLifeCycle.createLifeCycles(
-    'contributor',
-    ContentType.collection,
-    'contributor',
-    _update,
-  ),
+  lifecycles: ModelLifeCycle.createLifeCycles({
+    content: 'contributor',
+    type: ContentType.collection,
+    section: 'contributor',
+    updaterFn: _update,
+  }),
 };

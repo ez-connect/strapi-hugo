@@ -66,17 +66,13 @@ Writer.prototype.normalize = function (result) {
   // Authors
   doc.authors = [];
   if (doc.created_by) {
-    doc.authors.push({
-      userID: doc.created_by.id,
-      name: doc.created_by.firstname,
-    });
+    const { id, firstname } = doc.created_by;
+    doc.authors.push(`${firstname}-${id}`);
   }
   if (doc.updated_by) {
     if (doc.created_by.id != doc.updated_by.id) {
-      doc.authors.push({
-        userID: doc.updated_by.id,
-        name: doc.updated_by.firstname,
-      });
+      const { id, firstname } = doc.updated_by;
+      doc.authors.push(`${firstname}-${id}`);
     }
   }
 
