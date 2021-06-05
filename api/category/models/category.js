@@ -12,11 +12,11 @@ const {
  * to customize this model
  */
 
-const _lifecycle = new ModelLifeCycle(
-  'category',
-  ContentType.category,
-  'document',
-);
+const _lifecycle = new ModelLifeCycle({
+  content: 'category',
+  type: ContentType.category,
+  section: 'document',
+});
 
 function _addMenu(result) {
   result.menu = {
