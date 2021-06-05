@@ -21,7 +21,7 @@ const _lifecycle = new ModelLifeCycle({
 function _addMenu(result) {
   result.menu = {
     document: {
-      parent: result.category?.title ?? '',
+      parent: result.parent?.title ?? '',
     },
   };
 }
@@ -52,14 +52,12 @@ module.exports = {
         fsutil.renameCategory('document', before, result);
 
         // Update
-        if (before && before.path != result.path) {
-          const ctx = { params: { category: result.id } };
-          let docs = await strapi.controllers.document.find(ctx);
+        const ctx = { params: { category: result.id } };
+        let docs = await strapi.controllers.document.find(ctx);
 
-          for (const doc of docs) {
-            _addDocumentMenu(doc);
-            writer.writeContent('document', doc);
-          }
+        for (const doc of docs) {
+          _addDocumentMenu(doc);
+          writer.writeContent('document', doc);
         }
       }
 
