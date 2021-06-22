@@ -18,8 +18,7 @@ FSUtil.prototype.getContentSlug = function (doc) {
 };
 
 FSUtil.prototype.getCategoryPath = function (section, doc) {
-  const parent = doc.parent?.path ?? '';
-  return path.join(this._outputDir, 'content', section, parent, doc.path);
+  return path.join(this._outputDir, 'content', section, doc.path);
 };
 
 FSUtil.prototype.getDataPath = function (name) {
@@ -58,12 +57,10 @@ FSUtil.prototype.rmContent = function (section, doc) {
   builder.queueBuild();
 };
 
-FSUtil.prototype.renameCategory = function (section, old, doc) {
-  if (old) {
-    const p = this.getCategoryPath(section, old);
-    if (fs.existsSync(p)) {
-      fs.renameSync(p, this.getCategoryPath(section, doc));
-    }
+FSUtil.prototype.rmCategory = function (section, doc) {
+  const p = this.getCategoryPath(section, doc);
+  if (fs.existsSync(p)) {
+    fs.rmdirSync(p, { recursive: true });
   }
 
   builder.queueBuild();

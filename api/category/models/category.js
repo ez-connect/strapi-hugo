@@ -47,9 +47,17 @@ module.exports = {
     },
     afterUpdate: async (result, params, data) => {
       const before = _lifecycle.getBefore();
-      if (before && before.path != result.path) {
-        console.log('Update category path:', before.path, result.path);
-        fsutil.renameCategory('document', before, result);
+      if (!before) return;
+
+      const isParentChanged = before.parent != result.parent;
+      const isPathChanged = before.path != result.path;
+      if (isParentChanged) {
+        console.log('Update category parent:', before.parent, result.parent);
+      }
+
+      if (isParentChanged || isPathChanged) {
+        console.log('Update document paths');
+        fsutil.rmCategory('document', before, result);
 
         // Update
         const ctx = { params: { category: result.id } };
