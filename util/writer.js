@@ -70,10 +70,8 @@ Writer.prototype.normalize = function (result) {
     doc.authors.push(`${firstname}-${id}`);
   }
   if (doc.updated_by) {
-    if (doc.created_by.id != doc.updated_by.id) {
-      const { id, firstname } = doc.updated_by;
-      doc.authors.push(`${firstname}-${id}`);
-    }
+    const { id, firstname } = doc.updated_by;
+    doc.authors.push(`${firstname}-${id}`);
   }
 
   for ([k, v] of Object.entries(_field)) {
