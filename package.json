@@ -1,7 +1,7 @@
 {
   "name": "cms",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Strapi headless CMS",
   "author": {
     "name": "Vinh <thanh.vinh@hotmail.com>"
@@ -23,20 +23,20 @@
   },
   "dependencies": {
     "@alumna/reflect": "^1.0.5",
-    "knex": "0.95.6",
-    "object-scan": "^16.0.2",
-    "slugify": "^1.5.3",
+    "knex": "0.95.10",
+    "object-scan": "^17.0.0",
+    "slugify": "^1.6.0",
     "sqlite3": "5.0.2",
-    "strapi": "3.6.3",
-    "strapi-admin": "3.6.3",
-    "strapi-connector-bookshelf": "3.6.3",
-    "strapi-plugin-content-manager": "3.6.3",
-    "strapi-plugin-content-type-builder": "3.6.3",
-    "strapi-plugin-email": "3.6.3",
-    "strapi-plugin-i18n": "3.6.3",
-    "strapi-plugin-upload": "3.6.3",
-    "strapi-plugin-users-permissions": "3.6.3",
-    "strapi-utils": "3.6.3",
+    "strapi": "3.6.8",
+    "strapi-admin": "3.6.8",
+    "strapi-connector-bookshelf": "3.6.8",
+    "strapi-plugin-content-manager": "3.6.8",
+    "strapi-plugin-content-type-builder": "3.6.8",
+    "strapi-plugin-email": "3.6.8",
+    "strapi-plugin-i18n": "3.6.8",
+    "strapi-plugin-upload": "3.6.8",
+    "strapi-plugin-users-permissions": "3.6.8",
+    "strapi-utils": "3.6.8",
     "yaml": "^1.10.2"
   },
   "devDependencies": {}
