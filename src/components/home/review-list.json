@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_home_review_lists",
+  "info": {
+    "displayName": "ReviewList",
+    "icon": "list-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home.review"
+    }
+  }
+}

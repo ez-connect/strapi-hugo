@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_resume_skills",
+  "info": {
+    "displayName": "Skill",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

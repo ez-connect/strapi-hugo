@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_home_partners",
+  "info": {
+    "displayName": "Partner",
+    "icon": "parking",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

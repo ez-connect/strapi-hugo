@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_home_banners",
+  "info": {
+    "displayName": "Banner",
+    "icon": "image"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "html": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  }
+}

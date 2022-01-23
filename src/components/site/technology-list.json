@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_technology_lists",
+  "info": {
+    "displayName": "TechnologyList",
+    "icon": "car-side",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "items": {
+      "displayName": "Technology",
+      "type": "component",
+      "repeatable": true,
+      "component": "site.technology"
+    }
+  }
+}

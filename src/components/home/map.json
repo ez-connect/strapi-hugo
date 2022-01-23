@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_maps",
+  "info": {
+    "displayName": "Map",
+    "icon": "map-marker-alt"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

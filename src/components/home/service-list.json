@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_home_service_lists",
+  "info": {
+    "displayName": "ServiceList",
+    "icon": "clipboard-list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home.service"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_reviews",
+  "info": {
+    "displayName": "Review",
+    "icon": "list"
+  },
+  "options": {},
+  "attributes": {
+    "reviewer": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "richtext"
+    }
+  }
+}

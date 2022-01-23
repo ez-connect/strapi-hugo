@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_resume_educations",
+  "info": {
+    "displayName": "Education",
+    "icon": "book-open"
+  },
+  "options": {},
+  "attributes": {
+    "degree": {
+      "type": "string"
+    },
+    "university": {
+      "type": "string"
+    },
+    "dates": {
+      "type": "string"
+    }
+  }
+}

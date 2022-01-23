@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_site_navs",
+  "info": {
+    "displayName": "Nav",
+    "icon": "angle-double-down"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    }
+  }
+}

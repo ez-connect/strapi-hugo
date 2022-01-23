@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_home_partner_lists",
+  "info": {
+    "displayName": "PartnerList",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home.partner"
+    }
+  }
+}

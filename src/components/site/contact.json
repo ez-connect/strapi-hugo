@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_site_contacts",
+  "info": {
+    "displayName": "Contact",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "provider": {
+      "type": "enumeration",
+      "enum": [
+        "address",
+        "email",
+        "phone",
+        "linkedIn",
+        "facebook",
+        "youtube",
+        "telegram"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
