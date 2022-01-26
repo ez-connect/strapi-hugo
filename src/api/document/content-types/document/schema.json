@@ -8,7 +8,8 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "populateCreatorFields": true
   },
   "pluginOptions": {
     "i18n": {
@@ -16,11 +17,6 @@
     }
   },
   "attributes": {
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
-    },
     "title": {
       "pluginOptions": {
         "i18n": {
@@ -45,6 +41,22 @@
         }
       },
       "type": "integer"
+    },
+    "parent": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     },
     "content": {
       "pluginOptions": {

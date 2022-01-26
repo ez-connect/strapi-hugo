@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_home_blocks",
+  "info": {
+    "displayName": "Block",
+    "icon": "file-contract"
+  },
+  "options": {},
+  "attributes": {
+    "html": {
+      "type": "string",
+      "required": true
+    },
+    "css": {
+      "type": "text"
+    },
+    "js": {
+      "type": "text"
+    }
+  }
+}
