@@ -20,7 +20,7 @@
     "components": {
       "type": "dynamiczone",
       "components": [
-        "home.banner",
+        "site.banner",
         "home.partner-list",
         "home.review-list",
         "site.contact-form",

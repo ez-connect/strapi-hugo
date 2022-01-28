@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_site_redirects",
+  "info": {
+    "displayName": "Redirect",
+    "icon": "external-link-square-alt"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    }
+  }
+}

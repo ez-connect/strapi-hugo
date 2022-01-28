@@ -34,29 +34,38 @@
       },
       "type": "text"
     },
+    "parent": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
     "weight": {
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "integer"
-    },
-    "parent": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
+      "type": "integer",
+      "default": 99
     },
     "tags": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "string"
+    },
+    "isIndex": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean"
     },
     "content": {
       "pluginOptions": {
@@ -65,6 +74,20 @@
         }
       },
       "type": "richtext"
+    },
+    "components": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "site.banner",
+        "site.block",
+        "site.newsletter",
+        "site.redirect"
+      ]
     }
   }
 }

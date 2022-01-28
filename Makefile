@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := run
+.PHONY: build
 
 lint:
 	@exit 1
