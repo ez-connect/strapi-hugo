@@ -13,6 +13,14 @@
     "subtitle": {
       "type": "text"
     },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
     "items": {
       "displayName": "Technology",
       "type": "component",

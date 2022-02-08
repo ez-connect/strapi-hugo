@@ -26,7 +26,9 @@
         "site.contact-form",
         "home.map",
         "home.service-list",
-        "site.technology-list"
+        "site.technology-list",
+        "home.promo-service",
+        "home.case-study-list"
       ],
       "pluginOptions": {
         "i18n": {

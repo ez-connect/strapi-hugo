@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_home_case_study_lists",
+  "info": {
+    "displayName": "CaseStudyList",
+    "icon": "align-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    }
+  }
+}
