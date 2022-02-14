@@ -7,21 +7,26 @@
   },
   "options": {},
   "attributes": {
-    "provider": {
-      "type": "enumeration",
-      "enum": [
-        "address",
-        "email",
-        "phone",
-        "linkedIn",
-        "facebook",
-        "youtube",
-        "telegram"
-      ]
+    "address": {
+      "type": "string"
     },
-    "value": {
-      "type": "string",
-      "required": true
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "linkedIn": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "youtube": {
+      "type": "string"
+    },
+    "telegram": {
+      "type": "string"
     }
   }
 }

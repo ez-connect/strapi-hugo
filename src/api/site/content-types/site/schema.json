@@ -47,15 +47,25 @@
       },
       "component": "site.footer"
     },
-    "contacts": {
+    "contact": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "component": "site.contact"
+    },
+    "webhook": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "site.webhook"
     }
   }
 }

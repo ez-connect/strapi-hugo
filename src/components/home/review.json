@@ -2,11 +2,12 @@
   "collectionName": "components_home_reviews",
   "info": {
     "displayName": "Review",
-    "icon": "list"
+    "icon": "list",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "reviewer": {
+    "name": {
       "type": "string"
     },
     "company": {
@@ -14,6 +15,14 @@
     },
     "comment": {
       "type": "richtext"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }
