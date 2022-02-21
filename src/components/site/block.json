@@ -2,12 +2,13 @@
   "collectionName": "components_site_blocks",
   "info": {
     "displayName": "Block",
-    "icon": "file-contract"
+    "icon": "file-contract",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "html": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "css": {

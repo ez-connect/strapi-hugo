@@ -14,4 +14,4 @@ serve:
 	@npm run start
 
 build:
-	@npm run build
+	@NODE_ENV=production npm run build
