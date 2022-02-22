@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_about_intros",
+  "info": {
+    "displayName": "Intro",
+    "icon": "flag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "videoEmbedURL": {
+      "type": "text"
+    }
+  }
+}

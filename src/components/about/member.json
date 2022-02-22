@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_about_members",
+  "info": {
+    "displayName": "member",
+    "icon": "user-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "career": {
+      "type": "string"
+    },
+    "facebookURL": {
+      "type": "string"
+    },
+    "telegramURL": {
+      "type": "string"
+    },
+    "linkedInURL": {
+      "type": "string"
+    }
+  }
+}

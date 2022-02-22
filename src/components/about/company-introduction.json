@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_about_company_introductions",
+  "info": {
+    "displayName": "CompanyIntroduction",
+    "icon": "building",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "introductionDetail": {
+      "displayName": "IntroductionDetail",
+      "type": "component",
+      "repeatable": true,
+      "component": "about.introduction-detail"
+    }
+  }
+}

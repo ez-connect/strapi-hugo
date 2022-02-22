@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_about_our_teams",
+  "info": {
+    "displayName": "OurTeam",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "member": {
+      "displayName": "member",
+      "type": "component",
+      "repeatable": true,
+      "component": "about.member"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

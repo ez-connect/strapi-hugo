@@ -25,7 +25,11 @@
       "type": "dynamiczone",
       "components": [
         "site.banner",
-        "site.technology-list"
+        "site.technology-list",
+        "about.company-introduction",
+        "about.our-team",
+        "site.contact-form",
+        "about.intro"
       ]
     }
   }
