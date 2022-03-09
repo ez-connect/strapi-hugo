@@ -1,0 +1,14 @@
+name: cms
+version: 0.2.0
+description: Home CMS
+
+port:
+  http: 1337
+
+k8s:
+  repository: registry.gitlab.com/free-mind/hub/cms
+  service:
+    http:
+      host: cms.freemind.com.vn
+  hostPath: /mnt/data/cms
+  mountPath: /app
