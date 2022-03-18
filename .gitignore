@@ -112,3 +112,16 @@ exports
 *.cache
 build
 .strapi-updater.json
+
+############################
+# gkgen
+############################
+
+base/
+dist/
+
+# Registry username & password
+.makerc
+
+# Helm package
+*.tgz

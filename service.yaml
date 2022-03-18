@@ -1,0 +1,25 @@
+name: cms
+version: 0.2.0
+description: Home CMS
+
+port:
+  http: 1337
+
+k8s:
+  repository: docker.io/ezconnect/cms
+  hostname: freemind.com.vn
+  service:
+    http:
+      host: cms
+  tls: staging-tls
+  volume:
+    cms-db:
+      class: manual
+      size: 16Mi
+      path: /app/.tmp
+      host: /mnt/cms/db
+    cms-public:
+      class: manual
+      size: 256Mi
+      path: /app/public
+      host: /mnt/cms/public
