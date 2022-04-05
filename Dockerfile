@@ -16,6 +16,7 @@ RUN wget https://github.com/ez-connect/hugo-theme-cms/archive/refs/heads/main.zi
   && npm ci \
   && npm run build
 
+VOLUME /app/.tmp
 VOLUME /app/public
 
 EXPOSE 1337

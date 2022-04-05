@@ -113,12 +113,16 @@ exports
 build
 .strapi-updater.json
 
-############################
+###########################################################
 # gkgen
-############################
+###########################################################
 
 base/
+chart/
 dist/
+
+# Make env from yaml
+.make.env
 
 # Registry username & password
 .makerc
