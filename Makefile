@@ -18,6 +18,10 @@ clean:
 lint:
 	@exit 1
 
+patch:
+	# npx patch-package strapi-plugin-wysiwsg-react-md-editor
+	npx patch-package
+
 debug:
 	@npm run debug
 
@@ -27,7 +31,7 @@ run:
 serve:
 	@npm run start
 
-build:
+build: patch
 	@NODE_ENV=production npm run build
 
 ###########################################################

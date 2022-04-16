@@ -1,5 +1,5 @@
-name: cms
-version: 0.2.1
+name: hugo-cms
+version: 0.2.2
 description: CMS
 # The go package of the service, required for the go source generation.
 # Leave it blank if use only chart generation.

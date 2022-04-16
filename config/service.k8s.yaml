@@ -9,7 +9,7 @@ deployment:
   kind: StatefulSet # one of [Deployment|StatefulSet]
   replicas: 1 # specified number of pod replicas are running at any given time
   # annotations: {}
-  image: docker.io/ezconnect/cms
+  image: docker.io/ezconnect/hugo-cms
   # tag: latest # optional, default is the current version
   # imagePullSecrets: # optional, leave it blank for public registries
   #   - gitlab-auth
