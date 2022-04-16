@@ -6,7 +6,7 @@
 # https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 # https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
 deployment:
-  kind: StatefulSet # one of [Deployment|StatefulSet]
+  kind: Deployment # one of [Deployment|StatefulSet]
   replicas: 1 # specified number of pod replicas are running at any given time
   # annotations: {}
   image: docker.io/ezconnect/hugo-cms
@@ -106,8 +106,8 @@ persistent:
 #   runAsUser: 65534
 #   allowPrivilegeEscalation: false
 
-# nodeSelector:
-#   kubernetes.io/hostname: microk8s
+nodeSelector:
+  kubernetes.io/hostname: freemind.vn
 
 # https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/#schedule-a-pod-using-required-node-affinity
 # affinity: {}

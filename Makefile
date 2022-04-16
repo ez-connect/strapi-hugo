@@ -15,12 +15,14 @@
 clean:
 	git clean -fdx
 
-lint:
-	@exit 1
+patch-update:
+	@npm run patch-update
 
 patch:
-	# npx patch-package strapi-plugin-wysiwsg-react-md-editor
-	npx patch-package
+	@npm run patch
+
+lint:
+	@exit 1
 
 debug:
 	@npm run debug
@@ -31,7 +33,7 @@ run:
 serve:
 	@npm run start
 
-build: patch
+build:
 	@NODE_ENV=production npm run build
 
 ###########################################################
