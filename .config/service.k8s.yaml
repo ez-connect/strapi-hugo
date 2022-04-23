@@ -96,8 +96,8 @@ ingress:
   # annotations:
   #   nginx.ingress.kubernetes.io/ssl-redirect: "true"
   #   nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-  domain: ez-connect.net
-  tls: staging-tls
+  domain: freemind.vn
+  tls: production-tls
   host:
     http:
       subdomain: cms
