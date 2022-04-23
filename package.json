@@ -5,7 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "patch-update": "npx patch-package strapi-plugin-wysiwsg-react-md-editor",
-    "patch": "npx patch-package",
+    "patch": "yes | npx patch-package",
     "postinstall": "npm run patch",
     "develop": "strapi develop",
     "start": "strapi start",

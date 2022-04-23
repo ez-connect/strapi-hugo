@@ -117,8 +117,8 @@ build
 # gkgen
 ###########################################################
 
-base/
-chart/
+.base/
+.chart/
 dist/
 
 # Make env from yaml
