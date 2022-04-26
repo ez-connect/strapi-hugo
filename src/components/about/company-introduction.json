@@ -18,6 +18,9 @@
       "type": "component",
       "repeatable": true,
       "component": "about.introduction-detail"
+    },
+    "button": {
+      "type": "string"
     }
   }
 }
