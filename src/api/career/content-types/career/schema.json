@@ -50,13 +50,20 @@
         }
       }
     },
-    "developer": {
+    "position": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "type": "boolean"
+      "type": "enumeration",
+      "enum": [
+        "Developer",
+        "Designer",
+        "QA",
+        "Tester"
+      ],
+      "required": true
     }
   }
 }
