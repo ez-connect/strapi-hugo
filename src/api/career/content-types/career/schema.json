@@ -60,7 +60,7 @@
       "enum": [
         "Developer",
         "Designer",
-        "QA",
+        "QC",
         "Tester"
       ],
       "required": true
