@@ -28,7 +28,8 @@
         "home.service-list",
         "site.technology-list",
         "home.promo-service",
-        "home.case-study-list"
+        "home.case-study-list",
+        "home.ecommerce"
       ],
       "pluginOptions": {
         "i18n": {
