@@ -52,7 +52,7 @@ build:
 ###########################################################
 #: Builds an OCI image using instructions in 'Dockerfile'
 oci:
-	buildah bud -t $(NAME):$(VERSION) $(args)
+	podman build -t $(IMAGE_NAME):$(VERSION) -f Dockerfile $(args)
 
 # Push OCI
 #: Pushes an image to a specified location that defined in '.makerc'
@@ -62,15 +62,19 @@ ifeq ($(and $(REGISTRY_USERNAME),$(REGISTRY_PWD)),)
 	@exit 1
 endif
 
-	buildah login -u $(REGISTRY_USERNAME) -p $(REGISTRY_PWD) $(REGISTRY)
-	buildah push $(NAME):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(NAME):$(VERSION)
+	podman login -u $(REGISTRY_USERNAME) -p $(REGISTRY_PWD) $(REGISTRY)
+	podman push $(IMAGE_NAME):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(IMAGE_NAME):$(VERSION)
+
+ifneq ($(args),)
+	podman push $(IMAGE_NAME):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(IMAGE_NAME):$(args)
+endif
 
 ###########################################################
 # Helm
 ###########################################################
 #: Generates the Helm chart
 helm:
-	gkgen -k $(args) .
+	gkgen helm $(args)
 	cp .config/service.k8s.yaml .chart/values.yaml
 ifneq ($(wildcard .chart/Chart.lock),)
 	rm .chart/Chart.lock
@@ -80,7 +84,7 @@ endif
 
 #: Render chart templates locally and write to '.chart/k8s.yaml'
 pod: helm
-	helm template $(NAME) .chart/ > .chart/k8s.yaml
+	helm template $(IMAGE_NAME) .chart/ > .chart/k8s.yaml
 
 #: Uploads chart to the repo that defined in '.makerc'
 package: helm
@@ -93,16 +97,16 @@ endif
 
 #: Installs the chart to a remote defined in '.makerc'
 install:
-	ssh $(SSH_DESTINATION) '$(HELM_CMD) repo update && $(HELM_CMD) install $(NAME) $(HELM_REPO)/$(NAME) -n $(NAMESPACE) --version $(VERSION)'
+	helm repo update && helm install $(IMAGE_NAME) $(HELM_REPO)/$(IMAGE_NAME) -n $(NAMESPACE) --version $(VERSION)
 
 #: Upgrades the release to the current version of the chart
 upgrade:
-	ssh $(SSH_DESTINATION) '$(HELM_CMD) repo update && $(HELM_CMD) upgrade $(NAME) $(HELM_REPO)/$(NAME) -n $(NAMESPACE) --version $(VERSION)'
+	helm repo update && helm upgrade $(IMAGE_NAME) $(HELM_REPO)/$(IMAGE_NAME) -n $(NAMESPACE) --version $(VERSION)
 
 #: Restarts the release
 restart:
-	@ssh $(SSH_DESTINATION) '$(KUBECTL_CMD) rollout restart $(DEPLOYMENT_KIND)/$(NAME) -n $(NAMESPACE)'
+	kubectl rollout restart $(DEPLOYMENT_KIND)/$(IMAGE_NAME) -n $(NAMESPACE)
 
 #: Uninstalls the service
 uninstall:
-	ssh $(SSH_DESTINATION) '$(HELM_CMD) uninstall $(NAME) -n $(NAMESPACE)'
+	helm uninstall $(IMAGE_NAME) -n $(NAMESPACE)
