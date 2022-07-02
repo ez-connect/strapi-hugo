@@ -1,4 +1,4 @@
-FROM docker.io/alpine
+FROM docker.io/node:lts-alpine
 
 ENV HOST=0.0.0.0
 ENV PORT=1337
@@ -16,8 +16,7 @@ ENV DATABASE_FILENAME=.tmp/data.db
 # ENV DATABASE_HOST=localhost
 # ENV DATABASE_PORT=5432
 # ENV DATABASE_NAME=hugo-cms
-# ENV DATABASE_USERNAME=root
-# ENV DATABASE_USERNAME=root
+# ENV DATABASE_USERNAME=cms
 # ENV DATABASE_PASSWORD=
 # ENV DATABASE_SSL=false
 
@@ -25,16 +24,17 @@ ENV EMAIL_API_KEY=SG.sendgridapikey
 ENV EMAIL_DEFAULT_FROM=noreply@ez-connect.net
 ENV EMAIL_DEFAULT_REPLY_TO=noreply@ez-connect.net
 
-WORKDIR /app
+# Add user
+RUN set -ex && adduser -D strapi
 
-RUN set -e -x && \
-  # NodeJS
-  apk add --no-cache nodejs npm && \
+USER strapi
+
+RUN set -ex && cd /home/strapi && \
   # Download source
   wget https://github.com/ez-connect/hugo-theme-cms/archive/refs/heads/main.zip && \
   unzip main.zip && rm main.zip && \
-  mv hugo-theme-cms-main/* . && \
-  rm -rf hugo-theme-cms && \
+  mv hugo-theme-cms-main/ app && \
+  cd app && \
   # Install packages
   npm ci && \
   # Build the admin panel
@@ -42,8 +42,8 @@ RUN set -e -x && \
   # Production environment
   NODE_ENV=production
 
-VOLUME /app/.tmp
-VOLUME /app/public
+VOLUME /home/strapi/app/.tmp
+VOLUME /home/strapi/app/public
 
 EXPOSE 1337
 

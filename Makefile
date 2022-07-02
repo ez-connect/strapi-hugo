@@ -4,12 +4,35 @@
 
 .PHONY: build
 
-# Git
-# gitBranch := $(shell git rev-parse --abbrev-ref HEAD)
-# gitCommit := $(shell git rev-parse --short HEAD)
-
+# Environments
 -include .makerc
--include .make.env
+
+# Service
+NAME			?= $(shell grep -P -o '(?<=name: )[^\s]+' .config/service.base.yaml)
+VERSION			?= $(shell grep -P -o '(?<=version: )[^\s]+' .config/service.base.yaml)
+DESCRIPTION		?= $(shell grep -P -o '(?<=description: )[^\n]+' .config/service.base.yaml)
+README			?= $(shell grep -P -o '(?<=readme: )[^\s]+' .config/service.base.yaml)
+NAMESPACE		?= $(shell grep -P -o '(?<=namespace: )[^\s]+' .config/service.base.yaml)
+
+# Registry
+REGISTRY 		?= registry.gitlab.com
+REGISTRY_REPO 	?= free-mind/hub
+DOCKERFILE 		?= Dockerfile
+DEPLOYMENT_KIND	?= $(shell grep -P -o '(?<=kind: )[\w+]+' .config/service.k8s.yaml | tr '[:upper:]' '[:lower:]')
+ifeq ($(HELM_NAMESPACE),)
+	HELM_NAMESPACE	= $(NAMESPACE)
+endif
+
+# OCI
+ifndef IMAGE
+	ifneq ($(NAMESPACE),)
+		IMAGE	= $(NAMESPACE)-$(NAME)
+	else
+		IMAGE	= $(NAME)
+	endif
+endif
+
+TAG				?= $(VERSION)
 
 # Lists all targets
 help:
@@ -17,7 +40,7 @@ help:
 		| grep -v -- -- \
 		| sed 'N;s/\n/###/' \
 		| sed -n 's/^#: \(.*\)###\(.*\):.*/\2###\1/p' \
-		| column -t  -s '###'
+		| column -t -s '###'
 
 #: Removes untracked files from the working tree
 clean:
@@ -47,31 +70,24 @@ serve:
 build:
 	@NODE_ENV=production npm run build
 
-###########################################################
+###############################################################################
 # OCI
-###########################################################
+###############################################################################
 #: Builds an OCI image using instructions in 'Dockerfile'
 oci:
-	podman build -t $(IMAGE_NAME):$(VERSION) -f Dockerfile $(args)
+	podman build -t $(IMAGE):$(VERSION) -f $(DOCKERFILE) $(args) \
+		--annotation org.opencontainers.image.created="$(shell date --iso-8601=seconds)" \
+		--annotation org.opencontainers.image.description="$(DESCRIPTION)" \
+		--annotation io.artifacthub.package.readme-url="$(README)"
 
-# Push OCI
 #: Pushes an image to a specified location that defined in '.makerc'
 oci-push:
-ifeq ($(and $(REGISTRY_USERNAME),$(REGISTRY_PWD)),)
-	@echo 'User and password are incorrect'
-	@exit 1
-endif
+	podman login $(REGISTRY)
+	podman push $(IMAGE):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(IMAGE):$(TAG)
 
-	podman login -u $(REGISTRY_USERNAME) -p $(REGISTRY_PWD) $(REGISTRY)
-	podman push $(IMAGE_NAME):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(IMAGE_NAME):$(VERSION)
-
-ifneq ($(args),)
-	podman push $(IMAGE_NAME):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(IMAGE_NAME):$(args)
-endif
-
-###########################################################
+###############################################################################
 # Helm
-###########################################################
+###############################################################################
 #: Generates the Helm chart
 helm:
 	gkgen helm $(args)
@@ -84,29 +100,24 @@ endif
 
 #: Render chart templates locally and write to '.chart/k8s.yaml'
 pod: helm
-	helm template $(IMAGE_NAME) .chart/ > .chart/k8s.yaml
+	helm template $(IMAGE) .chart/ > .chart/k8s.yaml
 
 #: Uploads chart to the repo that defined in '.makerc'
 package: helm
-ifndef HELM_REPO
-	@echo 'Missing "HELM_REPO" in .makerc'
-	@exit 1
-endif
-
 	helm cm-push .chart/ $(HELM_REPO)
 
 #: Installs the chart to a remote defined in '.makerc'
 install:
-	helm repo update && helm install $(IMAGE_NAME) $(HELM_REPO)/$(IMAGE_NAME) -n $(NAMESPACE) --version $(VERSION)
+	helm repo update && helm install $(IMAGE) $(HELM_REPO)/$(IMAGE) -n $(HELM_NAMESPACE) --version $(VERSION) $(args)
 
 #: Upgrades the release to the current version of the chart
 upgrade:
-	helm repo update && helm upgrade $(IMAGE_NAME) $(HELM_REPO)/$(IMAGE_NAME) -n $(NAMESPACE) --version $(VERSION)
+	helm repo update && helm upgrade $(IMAGE) $(HELM_REPO)/$(IMAGE) -n $(HELM_NAMESPACE) --version $(VERSION) $(args)
 
 #: Restarts the release
 restart:
-	kubectl rollout restart $(DEPLOYMENT_KIND)/$(IMAGE_NAME) -n $(NAMESPACE)
+	kubectl rollout restart $(DEPLOYMENT_KIND)/$(IMAGE) -n $(HELM_NAMESPACE) $(args)
 
 #: Uninstalls the service
 uninstall:
-	helm uninstall $(IMAGE_NAME) -n $(NAMESPACE)
+	helm uninstall $(IMAGE) -n $(HELM_NAMESPACE) $(args)

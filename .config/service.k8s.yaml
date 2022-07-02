@@ -46,19 +46,13 @@ deployment:
     APP_KEYS: w+/rpoWUMyZ7XTVPnmu5RA==,wAvgh5cC4Z8oUHuPes8YcQ==,OCF9CSm0iL9muD431HTYPw==,AfBYqqCoPMUKOrSKp4S+7w==
     API_TOKEN_SALT: Az9F8ga74Ng5U3cg3EUkbQ==
     ADMIN_JWT_SECRET: 9S+lrABG4o+rvkGLUG1d7g==
-
-    # sqlite
-    DATABASE: sqlite
-    DATABASE_FILENAME: .tmp/data.db
-
-    # postgres
-    # DATABASE: postgres
-    # DATABASE_HOST: postgres.default.svc.cluster.local
-    # DATABASE_PORT: 5432
-    # DATABASE_NAME: hugo-cms
-    # DATABASE_USERNAME: postgres
-    # DATABASE_PASSWORD: "postgress-pwd"
-    # DATABASE_SSL: false
+    DATABASE: postgres # sqlite | postgres
+    DATABASE_HOST: postgres.default.svc.cluster.local
+    DATABASE_PORT: 5432
+    DATABASE_NAME: cms
+    DATABASE_USERNAME: root
+    DATABASE_PASSWORD: mQBvW7aBA6b5
+    DATABASE_SSL: false
 
     EMAIL_API_KEY: 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
     EMAIL_DEFAULT_FROM: noreply@ez-connect.net
@@ -93,6 +87,7 @@ service:
 
 ingress:
   enabled: true
+  className: nginx
   # annotations:
   #   nginx.ingress.kubernetes.io/ssl-redirect: "true"
   #   nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
@@ -105,22 +100,24 @@ ingress:
       type: Prefix
 
 # An addidition ingress if it have different annotations
-ingressEx:
-  enabled: false
+# ingressEx:
+#   enabled: false
 
 #  Persistent volumes
 # https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 persistent:
   enabled: true
   volume:
-    cms-db:
-      class: nfs-csi # manual, leave empty to use the default
-      accessModes:
-        - ReadWriteOnce
-      size: 16Mi
-      path: /app/.tmp
+    # Use sqlite
+    # cms-db:
+    #   # class: default # manual, nfs-csi, longhorn... leave empty to use the default
+    #   accessModes:
+    #     - ReadWriteOnce
+    #   size: 16Mi
+    #   path: /app/.tmp
+    # Public dir
     cms-public:
-      class: nfs-csi # manual, leave empty to use the default
+      # class: default # manual, nfs-csi, longhorn... leave empty to use the default
       accessModes:
         - ReadWriteOnce
       size: 256Mi
