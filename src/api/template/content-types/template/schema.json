@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "templates",
+  "info": {
+    "singularName": "template",
+    "pluralName": "templates",
+    "displayName": "Template",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topics": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "html": {
+      "type": "text"
+    }
+  }
+}

@@ -19,7 +19,7 @@
     "@strapi/strapi": "4.2.2",
     "better-sqlite3": "7.5.3",
     "pg": "8.7.3",
-    "strapi-plugin-import-export-entries": "1.6.2",
+    "strapi-plugin-import-export-entries": "1.6.3",
     "strapi-plugin-wysiwsg-react-md-editor": "4.2.0"
   },
   "author": {
