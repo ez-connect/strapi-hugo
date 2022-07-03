@@ -7,18 +7,26 @@
 module.exports = {
   // Webhook data
   send: async (ctx, next) => {
-    const topic = ctx.request.body.model;
-    const entry = ctx.request.body.entry;
+    const { event, model, entry } = ctx.request.body;
+    // Should be trigger on publish, and create on some types only
+    if (event === 'entry.create') {
+      if (model != 'contact' && model !== 'applicant') {
+        return next();
+      }
+    }
+    // else if (event !== 'entry.publish') {
+    //   return next();
+    // }
 
     // Email template
-    const template = await strapi.service('api::mail.mail').findOneTemplate(topic);
+    const template = await strapi.service('api::mail.mail').findOneTemplate(model);
     if (!template) {
       throw new Error('template not found');
     }
 
     // console.log(template);
 
-    const subscriptions = await strapi.service('api::mail.mail').findSubscriptions(topic);
+    const subscriptions = await strapi.service('api::mail.mail').findSubscriptions(model);
     subscriptions.map((e) => {
       console.log('Send email to: ', e.email);
       // https://docs.strapi.io/developer-docs/latest/plugins/email.html#programmatic-usage
@@ -29,7 +37,7 @@ module.exports = {
         },
         template,
         {
-          topic,
+          topic: model,
           entry,
         }
       );

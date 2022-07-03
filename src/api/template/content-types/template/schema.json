@@ -20,6 +20,9 @@
     },
     "html": {
       "type": "text"
+    },
+    "text": {
+      "type": "text"
     }
   }
 }
