@@ -8,10 +8,10 @@
 -include .makerc
 
 # Service
-NAME			?= $(shell grep -P -o '(?<=name: )[^\s]+' .config/service.base.yaml)
-VERSION			?= $(shell grep -P -o '(?<=version: )[^\s]+' .config/service.base.yaml)
-DESCRIPTION		?= $(shell grep -P -o '(?<=description: )[^\n]+' .config/service.base.yaml)
-README			?= $(shell grep -P -o '(?<=readme: )[^\s]+' .config/service.base.yaml)
+NAME			= $(shell grep -P -o '(?<=name: )[^\s]+' .config/service.base.yaml)
+VERSION			= $(shell grep -P -o '(?<=version: )[^\s]+' .config/service.base.yaml)
+DESCRIPTION		= $(shell grep -P -o '(?<=description: )[^\n]+' .config/service.base.yaml)
+README			= $(shell grep -P -o '(?<=readme: )[^\s]+' .config/service.base.yaml)
 NAMESPACE		?= $(shell grep -P -o '(?<=namespace: )[^\s]+' .config/service.base.yaml)
 
 # Registry
@@ -76,7 +76,7 @@ build:
 #: Builds an OCI image using instructions in 'Dockerfile'
 oci:
 	podman build -t $(IMAGE):$(VERSION) -f $(DOCKERFILE) $(args) \
-		--annotation org.opencontainers.image.created="$(shell date --iso-8601=seconds)" \
+		--annotation org.opencontainers.image.created="$(shell date -I'seconds')" \
 		--annotation org.opencontainers.image.description="$(DESCRIPTION)" \
 		--annotation io.artifacthub.package.readme-url="$(README)"
 

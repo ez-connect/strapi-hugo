@@ -36,7 +36,7 @@ deployment:
   kind: Deployment # one of [Deployment|StatefulSet]
   replicas: 1 # specified number of pod replicas are running at any given time
   # annotations: {}
-  image: docker.io/ezconnect/hugo-theme-cms
+  image: docker.io/ezconnect/strapi-hugo
   # tag: latest # optional, default is the current version
   # imagePullSecrets: # optional, leave it blank for public registries
   #   - gitlab-auth
@@ -51,7 +51,7 @@ deployment:
     DATABASE_PORT: 5432
     DATABASE_NAME: cms
     DATABASE_USERNAME: root
-    DATABASE_PASSWORD: mQBvW7aBA6b5
+    DATABASE_PASSWORD: M329fEv4u4Tq3FNe
     DATABASE_SSL: false
 
     EMAIL_API_KEY: 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

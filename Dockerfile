@@ -1,5 +1,7 @@
 FROM docker.io/node:lts-alpine
 
+ARG version=0.3.0
+
 ENV HOST=0.0.0.0
 ENV PORT=1337
 
@@ -31,9 +33,9 @@ USER strapi
 
 RUN set -ex && cd /home/strapi && \
   # Download source
-  wget https://github.com/ez-connect/hugo-theme-cms/archive/refs/heads/main.zip && \
-  unzip main.zip && rm main.zip && \
-  mv hugo-theme-cms-main/ app && \
+  wget -O strapi-hugo.zip https://github.com/ez-connect/strapi-hugo/archive/refs/heads/v${version}.zip && \
+  unzip strapi-hugo.zip && rm strapi-hugo.zip && \
+  mv strapi-hugo-${version}/ app && \
   cd app && \
   # Install packages
   npm ci && \
@@ -41,6 +43,8 @@ RUN set -ex && cd /home/strapi && \
   npm run build && \
   # Production environment
   NODE_ENV=production
+
+WORKDIR /home/strapi/app/
 
 VOLUME /home/strapi/app/.tmp
 VOLUME /home/strapi/app/public

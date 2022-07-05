@@ -1,5 +1,5 @@
-name: hugo-theme-cms
+name: strapi-hugo
 namespace:
 version: 0.3.0
 description: A Strapi application
-readme: https://raw.githubusercontent.com/ez-connect/hugo-theme-cms/main/README.md
+readme: https://raw.githubusercontent.com/ez-connect/strapi-hugo/main/README.md
