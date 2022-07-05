@@ -27,9 +27,10 @@ module.exports = () => ({
       {
         fields: ['email'],
         filters: {
-          topics: {
-            $contains: topic,
-          },
+          $or: [
+            { topics: { $eq: '*' } },
+            { topics: { $contains: topic } },
+          ],
         },
         pagination: {
           pageSize: 100,

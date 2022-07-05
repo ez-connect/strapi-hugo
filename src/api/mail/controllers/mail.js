@@ -17,13 +17,12 @@ module.exports = {
       return next();
     }
 
-    console.log(template);
+    // console.log(template);
 
     // Should be trigger on publish, and create on some types only
     if (event !== template.event) {
       return next();
     }
-
 
     const subscriptions = await strapi.service('api::mail.mail').findSubscriptions(model);
     subscriptions.map((e) => {
