@@ -1,5 +1,8 @@
 'use strict';
 
+const _ = require('lodash');
+const slug = require('slug');
+
 /**
  * A set of functions called "actions" for `mail`
  */
@@ -8,38 +11,38 @@ module.exports = {
   // Webhook data
   send: async (ctx, next) => {
     const { event, model, entry } = ctx.request.body;
-    // Should be trigger on publish, and create on some types only
-    if (event === 'entry.create') {
-      if (model != 'contact' && model !== 'applicant') {
-        return next();
-      }
-    }
-    // else if (event !== 'entry.publish') {
-    //   return next();
-    // }
-
     // Email template
     const template = await strapi.service('api::mail.mail').findOneTemplate(model);
     if (!template) {
-      throw new Error('template not found');
+      return next();
     }
 
-    // console.log(template);
+    console.log(template);
+
+    // Should be trigger on publish, and create on some types only
+    if (event !== template.event) {
+      return next();
+    }
+
 
     const subscriptions = await strapi.service('api::mail.mail').findSubscriptions(model);
     subscriptions.map((e) => {
       console.log('Send email to: ', e.email);
       // https://docs.strapi.io/developer-docs/latest/plugins/email.html#programmatic-usage
-      strapi.plugins['email'].services.email.sendTemplatedEmail(
+      strapi.plugins['email-designer'].services.email.sendTemplatedEmail(
         {
           to: e.email,
           // from: is not specified, so it's the defaultFrom that will be used instead
         },
-        template,
+        {
+          templateReferenceId: template.templateId,
+          subject: _.template(template.subject, { entry}).data,
+        },
         {
           topic: model,
+          slug: `${slug(entry.title || entry.name)}-${entry.id}`,
           entry,
-        }
+        },
       );
     });
 

@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -18,11 +18,17 @@
     "subject": {
       "type": "string"
     },
-    "html": {
-      "type": "text"
+    "templateId": {
+      "type": "integer"
     },
-    "text": {
-      "type": "text"
+    "event": {
+      "type": "enumeration",
+      "enum": [
+        "entry.create",
+        "entry.update",
+        "entry.delete",
+        "entry.publish"
+      ]
     }
   }
 }
