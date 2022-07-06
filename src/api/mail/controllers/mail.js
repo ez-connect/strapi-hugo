@@ -24,6 +24,12 @@ module.exports = {
       return next();
     }
 
+    // Email data
+    let slug = `${slug(entry.title || entry.name)}-${entry.id}`;
+    if (entry.parent) {
+      slug = `${entry.parent}/${slug}`;
+    }
+
     const subscriptions = await strapi.service('api::mail.mail').findSubscriptions(model);
     subscriptions.map((e) => {
       console.log('Send email to: ', e.email);
@@ -38,8 +44,8 @@ module.exports = {
           subject: _.template(template.subject, { entry}).data,
         },
         {
-          topic: model,
-          slug: `${slug(entry.title || entry.name)}-${entry.id}`,
+          model,
+          slug,
           entry,
         },
       );
