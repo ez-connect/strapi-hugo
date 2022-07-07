@@ -1,7 +1,6 @@
 'use strict';
 
 const _ = require('lodash');
-const slug = require('slug');
 
 /**
  * A set of functions called "actions" for `mail`
@@ -25,7 +24,7 @@ module.exports = {
     }
 
     // Email data
-    let slug = `${slug(entry.title || entry.name)}-${entry.id}`;
+    let slug = `${require('slug')(entry.title || entry.name)}-${entry.id}`;
     if (entry.parent) {
       slug = `${entry.parent}/${slug}`;
     }
