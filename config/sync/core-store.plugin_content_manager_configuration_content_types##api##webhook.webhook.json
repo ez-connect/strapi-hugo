@@ -1,0 +1,143 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::webhook.webhook",
+  "value": {
+    "uid": "api::webhook.webhook",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "applyJob",
+      "defaultSortBy": "applyJob",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "applyJob": {
+        "edit": {
+          "label": "applyJob",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "applyJob",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "contact": {
+        "edit": {
+          "label": "contact",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contact",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "forgotPassword": {
+        "edit": {
+          "label": "forgotPassword",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "forgotPassword",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "subscribe": {
+        "edit": {
+          "label": "subscribe",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "subscribe",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "applyJob",
+        "contact",
+        "forgotPassword"
+      ],
+      "edit": [
+        [
+          {
+            "name": "applyJob",
+            "size": 6
+          },
+          {
+            "name": "contact",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "forgotPassword",
+            "size": 6
+          },
+          {
+            "name": "subscribe",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

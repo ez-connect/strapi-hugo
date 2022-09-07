@@ -11,9 +11,7 @@
       "required": true
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },

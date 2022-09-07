@@ -33,9 +33,7 @@
       "type": "text"
     },
     "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
       "pluginOptions": {

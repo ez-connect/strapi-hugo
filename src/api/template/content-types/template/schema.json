@@ -23,12 +23,7 @@
     },
     "event": {
       "type": "enumeration",
-      "enum": [
-        "entry.create",
-        "entry.update",
-        "entry.delete",
-        "entry.publish"
-      ]
+      "enum": ["entry.create", "entry.update", "entry.delete", "entry.publish"]
     }
   }
 }

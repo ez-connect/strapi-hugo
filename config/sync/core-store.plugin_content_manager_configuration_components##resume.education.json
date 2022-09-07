@@ -1,0 +1,98 @@
+{
+  "key": "plugin_content_manager_configuration_components::resume.education",
+  "value": {
+    "uid": "resume.education",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "degree",
+      "defaultSortBy": "degree",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "degree": {
+        "edit": {
+          "label": "degree",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "degree",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "university": {
+        "edit": {
+          "label": "university",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "university",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "dates": {
+        "edit": {
+          "label": "dates",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "dates",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "degree",
+        "university",
+        "dates"
+      ],
+      "edit": [
+        [
+          {
+            "name": "degree",
+            "size": 6
+          },
+          {
+            "name": "university",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "dates",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

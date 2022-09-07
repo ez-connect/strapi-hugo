@@ -1,0 +1,574 @@
+{
+  "name": "Editor",
+  "code": "strapi-editor",
+  "description": "Editors can manage and publish contents including those of other users.",
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::about.about",
+      "properties": {
+        "fields": [
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::about.about",
+      "properties": {
+        "fields": [
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::about.about",
+      "properties": {
+        "fields": [
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::applicant.applicant",
+      "properties": {
+        "fields": [
+          "career",
+          "name",
+          "phone",
+          "email",
+          "cv",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::applicant.applicant",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::applicant.applicant",
+      "properties": {
+        "fields": [
+          "career",
+          "name",
+          "phone",
+          "email",
+          "cv",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::applicant.applicant",
+      "properties": {
+        "fields": [
+          "career",
+          "name",
+          "phone",
+          "email",
+          "cv",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "thumbnail",
+          "tags",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "thumbnail",
+          "tags",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "thumbnail",
+          "tags",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::career.career",
+      "properties": {
+        "fields": [
+          "title",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::career.career",
+      "properties": {
+        "fields": [
+          "title",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::career.career",
+      "properties": {
+        "fields": [
+          "title",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": [
+          "name",
+          "email",
+          "phone",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::contact.contact",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": [
+          "name",
+          "email",
+          "phone",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": [
+          "name",
+          "email",
+          "phone",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::contributor.contributor",
+      "properties": {
+        "fields": [
+          "user",
+          "title",
+          "avatar",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::contributor.contributor",
+      "properties": {
+        "fields": [
+          "user",
+          "title",
+          "avatar",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::contributor.contributor",
+      "properties": {
+        "fields": [
+          "user",
+          "title",
+          "avatar",
+          "content"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "parent",
+          "weight",
+          "tags",
+          "isIndex",
+          "content",
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "parent",
+          "weight",
+          "tags",
+          "isIndex",
+          "content",
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "parent",
+          "weight",
+          "tags",
+          "isIndex",
+          "content",
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::home.home",
+      "properties": {
+        "fields": [
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::home.home",
+      "properties": {
+        "fields": [
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::home.home",
+      "properties": {
+        "fields": [
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "content",
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "content",
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "content",
+          "components"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "thumbnail",
+          "video"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "thumbnail",
+          "video"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "thumbnail",
+          "video"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::resume.resume",
+      "properties": {
+        "fields": [
+          "title",
+          "avatar",
+          "position",
+          "phone",
+          "email",
+          "webpage",
+          "address",
+          "bio",
+          "interest",
+          "content",
+          "socials.github",
+          "socials.gitlab",
+          "socials.linkedin",
+          "socials.twitter",
+          "socials.facebook",
+          "socials.instagram",
+          "experiences.title",
+          "experiences.dates",
+          "experiences.company",
+          "experiences.detail",
+          "skills.name",
+          "skills.description",
+          "educations.degree",
+          "educations.university",
+          "educations.dates",
+          "awards.name",
+          "awards.detail",
+          "awards.date",
+          "languages.name",
+          "languages.level"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::resume.resume",
+      "properties": {
+        "fields": [
+          "title",
+          "avatar",
+          "position",
+          "phone",
+          "email",
+          "webpage",
+          "address",
+          "bio",
+          "interest",
+          "content",
+          "socials.github",
+          "socials.gitlab",
+          "socials.linkedin",
+          "socials.twitter",
+          "socials.facebook",
+          "socials.instagram",
+          "experiences.title",
+          "experiences.dates",
+          "experiences.company",
+          "experiences.detail",
+          "skills.name",
+          "skills.description",
+          "educations.degree",
+          "educations.university",
+          "educations.dates",
+          "awards.name",
+          "awards.detail",
+          "awards.date",
+          "languages.name",
+          "languages.level"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::resume.resume",
+      "properties": {
+        "fields": [
+          "title",
+          "avatar",
+          "position",
+          "phone",
+          "email",
+          "webpage",
+          "address",
+          "bio",
+          "interest",
+          "content",
+          "socials.github",
+          "socials.gitlab",
+          "socials.linkedin",
+          "socials.twitter",
+          "socials.facebook",
+          "socials.instagram",
+          "experiences.title",
+          "experiences.dates",
+          "experiences.company",
+          "experiences.detail",
+          "skills.name",
+          "skills.description",
+          "educations.degree",
+          "educations.university",
+          "educations.dates",
+          "awards.name",
+          "awards.detail",
+          "awards.date",
+          "languages.name",
+          "languages.level"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::site.site",
+      "properties": {
+        "fields": [
+          "title"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::site.site",
+      "properties": {
+        "fields": [
+          "title"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::site.site",
+      "properties": {
+        "fields": [
+          "title"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    }
+  ]
+}

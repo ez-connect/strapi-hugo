@@ -11,7 +11,9 @@ module.exports = {
   send: async (ctx, next) => {
     const { event, model, entry } = ctx.request.body;
     // Email template
-    const template = await strapi.service('api::mail.mail').findOneTemplate(model);
+    const template = await strapi
+      .service('api::mail.mail')
+      .findOneTemplate(model);
     if (!template) {
       return next();
     }
@@ -29,7 +31,9 @@ module.exports = {
       slug = `${entry.parent}/${slug}`;
     }
 
-    const subscriptions = await strapi.service('api::mail.mail').findSubscriptions(model);
+    const subscriptions = await strapi
+      .service('api::mail.mail')
+      .findSubscriptions(model);
     subscriptions.map((e) => {
       console.log('Send email to: ', e.email);
       // https://docs.strapi.io/developer-docs/latest/plugins/email.html#programmatic-usage
@@ -40,7 +44,7 @@ module.exports = {
         },
         {
           templateReferenceId: template.templateId,
-          subject: _.template(template.subject, { entry}).data,
+          subject: _.template(template.subject, { entry }).data,
         },
         {
           model,
@@ -51,5 +55,5 @@ module.exports = {
     });
 
     ctx.body = subscriptions;
-  }
+  },
 };

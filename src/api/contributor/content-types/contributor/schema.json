@@ -27,9 +27,7 @@
       "required": true
     },
     "avatar": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },

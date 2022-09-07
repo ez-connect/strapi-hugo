@@ -27,45 +27,34 @@
       "default": "Ez-Connect",
       "required": true
     },
-    "navs": {
-      "type": "component",
-      "repeatable": true,
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "site.nav"
+      "type": "text"
     },
-    "footer": {
-      "type": "component",
-      "repeatable": false,
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
-      },
-      "component": "site.footer"
+      }
     },
-    "contact": {
-      "type": "component",
-      "repeatable": false,
+    "recommended": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "component": "site.contact"
-    },
-    "webhook": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "site.webhook"
+      "default": 5,
+      "required": false,
+      "type": "integer"
     }
   }
 }

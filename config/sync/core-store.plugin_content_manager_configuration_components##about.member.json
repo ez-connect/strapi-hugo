@@ -1,0 +1,154 @@
+{
+  "key": "plugin_content_manager_configuration_components::about.member",
+  "value": {
+    "uid": "about.member",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "avatar": {
+        "edit": {
+          "label": "avatar",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "avatar",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "career": {
+        "edit": {
+          "label": "career",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "career",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "facebookURL": {
+        "edit": {
+          "label": "facebookURL",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "facebookURL",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "telegramURL": {
+        "edit": {
+          "label": "telegramURL",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "telegramURL",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "linkedInURL": {
+        "edit": {
+          "label": "linkedInURL",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "linkedInURL",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "avatar",
+        "name",
+        "career"
+      ],
+      "edit": [
+        [
+          {
+            "name": "avatar",
+            "size": 6
+          },
+          {
+            "name": "name",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "career",
+            "size": 6
+          },
+          {
+            "name": "facebookURL",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "telegramURL",
+            "size": 6
+          },
+          {
+            "name": "linkedInURL",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

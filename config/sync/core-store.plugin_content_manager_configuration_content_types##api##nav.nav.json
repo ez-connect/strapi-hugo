@@ -1,0 +1,167 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::nav.nav",
+  "value": {
+    "uid": "api::nav.nav",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "default": {
+        "edit": {
+          "label": "default",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "default",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "document": {
+        "edit": {
+          "label": "document",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "document",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "article": {
+        "edit": {
+          "label": "article",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "article",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "resume": {
+        "edit": {
+          "label": "resume",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "resume",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "career": {
+        "edit": {
+          "label": "career",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "career",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "default",
+        "createdAt",
+        "updatedAt"
+      ],
+      "edit": [
+        [
+          {
+            "name": "default",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "document",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "article",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "resume",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "career",
+            "size": 12
+          }
+        ]
+      ],
+      "editRelations": []
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

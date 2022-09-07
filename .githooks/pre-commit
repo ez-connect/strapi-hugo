@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+
+# Format code before commit
+exec make lint

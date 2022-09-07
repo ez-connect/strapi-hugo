@@ -49,12 +49,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "site.banner",
-        "site.block",
-        "site.redirect",
-        "site.newsletter"
-      ]
+      "components": ["site.banner", "site.block", "site.redirect"]
     }
   }
 }

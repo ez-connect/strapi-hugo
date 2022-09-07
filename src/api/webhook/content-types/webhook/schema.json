@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "webhooks",
+  "info": {
+    "singularName": "webhook",
+    "pluralName": "webhooks",
+    "displayName": "Webhook",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "applyJob": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "string"
+    },
+    "forgotPassword": {
+      "type": "string"
+    },
+    "subscribe": {
+      "type": "string"
+    }
+  }
+}

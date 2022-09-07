@@ -1,0 +1,98 @@
+{
+  "key": "plugin_content_manager_configuration_components::site.block",
+  "value": {
+    "uid": "site.block",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "html": {
+        "edit": {
+          "label": "html",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "html",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "css": {
+        "edit": {
+          "label": "css",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "css",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "js": {
+        "edit": {
+          "label": "js",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "js",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "html",
+        "css",
+        "js"
+      ],
+      "edit": [
+        [
+          {
+            "name": "html",
+            "size": 6
+          },
+          {
+            "name": "css",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "js",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

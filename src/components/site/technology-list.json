@@ -14,9 +14,7 @@
       "type": "text"
     },
     "icon": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
       "required": false

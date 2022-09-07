@@ -26,21 +26,14 @@
         }
       }
     },
-    "description": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "tags": {
+    "categories": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "default": "Frontend,JavaScript,Fressher"
     },
     "content": {
       "type": "richtext",
@@ -49,21 +42,6 @@
           "localized": true
         }
       }
-    },
-    "position": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "Developer",
-        "Designer",
-        "QC",
-        "Tester"
-      ],
-      "required": true
     }
   }
 }

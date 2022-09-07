@@ -15,27 +15,21 @@ module.exports = () => ({
             $contains: topic,
           },
         },
-      }
+      },
     );
 
     return templates.shift();
   },
   // /api/subscriptions?filters[topics][$contains]=<placeholder>&fields=email&pagination[pageSize]=100
   findSubscriptions: async (topic) => {
-    return strapi.entityService.findMany(
-      'api::subscription.subscription',
-      {
-        fields: ['email'],
-        filters: {
-          $or: [
-            { topics: { $eq: '*' } },
-            { topics: { $contains: topic } },
-          ],
-        },
-        pagination: {
-          pageSize: 100,
-        },
-      }
-    );
+    return strapi.entityService.findMany('api::subscription.subscription', {
+      fields: ['email'],
+      filters: {
+        $or: [{ topics: { $eq: '*' } }, { topics: { $contains: topic } }],
+      },
+      pagination: {
+        pageSize: 100,
+      },
+    });
   },
 });

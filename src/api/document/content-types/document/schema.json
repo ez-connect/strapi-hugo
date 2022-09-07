@@ -26,14 +26,6 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "parent": {
       "pluginOptions": {
         "i18n": {
@@ -82,12 +74,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "site.banner",
-        "site.block",
-        "site.newsletter",
-        "site.redirect"
-      ]
+      "components": ["site.banner", "site.block", "site.redirect"]
     }
   }
 }
