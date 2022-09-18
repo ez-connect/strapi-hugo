@@ -4,13 +4,17 @@
   "info": {
     "singularName": "share",
     "pluralName": "shares",
-    "displayName": "Share"
+    "displayName": "Share",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "uid"
+    },
     "content": {
       "type": "richtext"
     }

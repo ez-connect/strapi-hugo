@@ -6,7 +6,7 @@
   "scripts": {
     "patch-update": "npx patch-package strapi-plugin-wysiwsg-react-md-editor",
     "patch": "npx --yes patch-package",
-    "postinstall": "npm run patch",
+    "postinstall": "npm run patch && npm ddp",
     "lint": "prettier -c -w src/",
     "develop": "strapi develop",
     "start": "strapi start",
@@ -15,16 +15,16 @@
     "cs": "config-sync"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.3.2",
-    "@strapi/plugin-users-permissions": "^4.3.2",
-    "@strapi/provider-email-sendgrid": "^4.3.2",
-    "@strapi/strapi": "^4.3.2",
+    "@strapi/plugin-i18n": "^4.3.8",
+    "@strapi/plugin-users-permissions": "^4.3.8",
+    "@strapi/provider-email-sendgrid": "^4.3.8",
+    "@strapi/strapi": "^4.3.8",
     "better-sqlite3": "7.6.2",
-    "pg": "^8.7.3",
-    "slug": "^5.3.0",
+    "pg": "^8.8.0",
+    "slug": "^8.0.0",
     "strapi-plugin-config-sync": "^1.0.4",
     "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-import-export-entries": "^1.10.1",
+    "strapi-plugin-import-export-entries": "^1.14.1",
     "strapi-plugin-wysiwsg-react-md-editor": "4.2.0"
   },
   "author": {
