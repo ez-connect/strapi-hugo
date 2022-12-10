@@ -43,14 +43,6 @@
       "type": "integer",
       "default": 99
     },
-    "tags": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string"
-    },
     "isIndex": {
       "pluginOptions": {
         "i18n": {

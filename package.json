@@ -15,20 +15,20 @@
     "cs": "config-sync"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.3.8",
-    "@strapi/plugin-users-permissions": "^4.3.8",
-    "@strapi/provider-email-sendgrid": "^4.3.8",
-    "@strapi/strapi": "^4.3.8",
-    "better-sqlite3": "7.6.2",
+    "@strapi/plugin-i18n": "4.5.3",
+    "@strapi/plugin-users-permissions": "4.5.3",
+    "@strapi/provider-email-sendgrid": "4.5.3",
+    "@strapi/strapi": "4.5.3",
+    "better-sqlite3": "8.0.1",
     "pg": "^8.8.0",
-    "slug": "^8.0.0",
-    "strapi-plugin-config-sync": "^1.0.4",
-    "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-import-export-entries": "^1.14.1",
+    "slug": "8.2.2",
+    "strapi-plugin-config-sync": "1.1.0",
+    "strapi-plugin-email-designer": "2.1.1",
+    "strapi-plugin-import-export-entries": "1.18.0",
     "strapi-plugin-wysiwsg-react-md-editor": "4.2.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "thanh.vinh@hotmail.com"
   },
   "strapi": {
     "uuid": "06224310-a5d3-49d9-8ace-6fcf40c33c62"
