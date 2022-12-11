@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "documents",
+  "collectionName": "indices",
   "info": {
-    "singularName": "document",
-    "pluralName": "documents",
-    "displayName": "Document",
+    "singularName": "index",
+    "pluralName": "indices",
+    "displayName": "Index",
     "description": ""
   },
   "options": {
@@ -23,25 +23,23 @@
           "localized": true
         }
       },
-      "type": "string",
-      "required": true
+      "type": "string"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     },
     "parent": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string"
-    },
-    "weight": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "integer",
-      "default": 99
     },
     "content": {
       "pluginOptions": {
@@ -50,19 +48,6 @@
         }
       },
       "type": "richtext"
-    },
-    "components": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "site.banner",
-        "site.block",
-        "site.redirect"
-      ]
     }
   }
 }
