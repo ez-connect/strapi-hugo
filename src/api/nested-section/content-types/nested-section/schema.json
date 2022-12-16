@@ -1,29 +1,30 @@
 {
   "kind": "collectionType",
-  "collectionName": "indices",
+  "collectionName": "nested_sections",
   "info": {
-    "singularName": "index",
-    "pluralName": "indices",
-    "displayName": "Index",
+    "singularName": "nested-section",
+    "pluralName": "nested-sections",
+    "displayName": "Nested Section",
     "description": ""
   },
   "options": {
-    "draftAndPublish": true,
-    "populateCreatorFields": true
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "i18n": {
-      "localized": true
+      "localized": true,
+      "populateCreatorFields": true
     }
   },
   "attributes": {
     "title": {
+      "type": "string",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "description": {
       "pluginOptions": {
@@ -33,13 +34,23 @@
       },
       "type": "text"
     },
-    "parent": {
+    "path": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "default": "dev"
+    },
+    "weight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "default": 99
     },
     "content": {
       "pluginOptions": {

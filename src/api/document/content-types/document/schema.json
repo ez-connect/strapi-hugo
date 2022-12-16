@@ -26,13 +26,18 @@
       "type": "string",
       "required": true
     },
-    "parent": {
+    "description": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
-      "type": "string"
+      "type": "text"
+    },
+    "section": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nested-section.nested-section"
     },
     "weight": {
       "pluginOptions": {
