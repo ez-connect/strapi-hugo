@@ -1,5 +1,4 @@
 name: strapi-hugo
-namespace:
-version: 0.3.0
+version: 0.4.0
 description: A Strapi application
 readme: https://raw.githubusercontent.com/ez-connect/strapi-hugo/main/README.md
