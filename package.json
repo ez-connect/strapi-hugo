@@ -1,12 +1,11 @@
 {
   "name": "hugo-theme-cms",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A Strapi application",
   "scripts": {
     "patch-update": "npx patch-package strapi-plugin-wysiwsg-react-md-editor",
     "patch": "npx --yes patch-package",
-    "postinstall": "npm run patch && npm ddp",
     "lint": "prettier -c -w src/",
     "develop": "strapi develop",
     "start": "strapi start",
@@ -15,17 +14,17 @@
     "cs": "config-sync"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.4.7",
-    "@strapi/plugin-users-permissions": "4.4.7",
-    "@strapi/provider-email-sendgrid": "4.4.7",
-    "@strapi/strapi": "4.4.7",
-    "better-sqlite3": "8.0.1",
-    "pg": "^8.8.0",
+    "@strapi/plugin-i18n": "4.9.0",
+    "@strapi/plugin-users-permissions": "4.9.0",
+    "@strapi/provider-email-sendgrid": "^4.9.0",
+    "@strapi/strapi": "4.9.0",
+    "pg": "^8.10.0",
+    "request": "^2.88.2",
     "slug": "8.2.2",
-    "strapi-plugin-config-sync": "1.1.0",
-    "strapi-plugin-email-designer": "2.1.1",
-    "strapi-plugin-import-export-entries": "1.18.0",
-    "strapi-plugin-wysiwsg-react-md-editor": "4.2.0"
+    "strapi-plugin-config-sync": "^1.1.1",
+    "strapi-plugin-email-designer": "^2.1.2",
+    "strapi-plugin-import-export-entries": "^1.18.0",
+    "strapi-plugin-wysiwyg-react-md-editor": "^4.3.0"
   },
   "author": {
     "name": "thanh.vinh@hotmail.com"
@@ -34,7 +33,7 @@
     "uuid": "06224310-a5d3-49d9-8ace-6fcf40c33c62"
   },
   "engines": {
-    "node": ">=12.x.x <=16.x.x",
+    "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

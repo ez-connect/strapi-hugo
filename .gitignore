@@ -110,6 +110,7 @@ coverage
 license.txt
 exports
 *.cache
+dist
 build
 .strapi-updater.json
 
@@ -119,7 +120,7 @@ build
 
 .base/
 .chart/
-dist/
+build/
 
 # Make env from yaml
 .make.env

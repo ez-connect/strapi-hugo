@@ -4,8 +4,7 @@
   "info": {
     "singularName": "about",
     "pluralName": "abouts",
-    "displayName": "About",
-    "description": ""
+    "displayName": "About"
   },
   "options": {
     "draftAndPublish": true
@@ -29,7 +28,8 @@
         "about.company-introduction",
         "about.our-team",
         "site.contact-form",
-        "about.intro"
+        "about.intro",
+        "site.block"
       ]
     }
   }

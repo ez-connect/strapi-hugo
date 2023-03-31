@@ -63,11 +63,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "site.banner",
-        "site.block",
-        "site.redirect"
-      ]
+      "components": ["site.banner", "site.block", "site.redirect"]
     }
   }
 }
