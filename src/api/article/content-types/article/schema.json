@@ -37,6 +37,15 @@
         }
       }
     },
+    "recommended": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false
+    },
     "tags": {
       "pluginOptions": {
         "i18n": {

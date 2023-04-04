@@ -1,5 +1,5 @@
 /**
- * section router.
+ * section router
  */
 
 import { factories } from '@strapi/strapi';

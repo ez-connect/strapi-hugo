@@ -37,7 +37,7 @@
     "section": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::nested-section.nested-section"
+      "target": "api::section.section"
     },
     "weight": {
       "pluginOptions": {

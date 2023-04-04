@@ -1,0 +1,47 @@
+{
+  "kind": "singleType",
+  "collectionName": "section_configs",
+  "info": {
+    "singularName": "section-config",
+    "pluralName": "section-configs",
+    "displayName": "Section Config"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true,
+      "populateCreatorFields": true
+    }
+  },
+  "attributes": {
+    "document": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": ["site.section"]
+    },
+    "article": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": ["site.section"]
+    },
+    "career": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": ["site.section"]
+    }
+  }
+}

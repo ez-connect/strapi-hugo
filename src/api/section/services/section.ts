@@ -1,5 +1,5 @@
 /**
- * section service.
+ * section service
  */
 
 import { factories } from '@strapi/strapi';

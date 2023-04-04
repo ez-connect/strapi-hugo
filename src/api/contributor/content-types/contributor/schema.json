@@ -4,13 +4,18 @@
   "info": {
     "singularName": "contributor",
     "pluralName": "contributors",
-    "displayName": "Contributor"
+    "displayName": "Contributor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true,
     "populateCreatorFields": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "user": {
       "type": "relation",
@@ -20,19 +25,30 @@
     "title": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "string",
       "required": true
     },
     "avatar": {
-      "allowedTypes": ["images"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

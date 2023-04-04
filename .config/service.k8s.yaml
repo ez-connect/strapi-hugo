@@ -7,9 +7,9 @@ deployment:
     ADMIN_JWT_SECRET: 9S+lrABG4o+rvkGLUG1d7g==
     API_TOKEN_SALT: Az9F8ga74Ng5U3cg3EUkbQ==
     APP_KEYS: w+/rpoWUMyZ7XTVPnmu5RA==,wAvgh5cC4Z8oUHuPes8YcQ==,OCF9CSm0iL9muD431HTYPw==,AfBYqqCoPMUKOrSKp4S+7w==
-    DATABASE: postgres
+    DATABASE_CLIENT: postgres
     DATABASE_HOST: postgres.default.svc.cluster.local
-    DATABASE_NAME: cms
+    DATABASE_NAME: cms_dev
     DATABASE_PASSWORD: M329fEv4u4Tq3FNe
     DATABASE_PORT: "5432"
     DATABASE_SSL: "false"
@@ -17,6 +17,7 @@ deployment:
     EMAIL_API_KEY: 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
     EMAIL_DEFAULT_FROM: noreply@ez-connect.net
     EMAIL_DEFAULT_REPLY_TO: noreply@ez-connect.net
+    TRANSFER_TOKEN_SALT: tobemodified
   command: []
   args: []
   initContainers: []
@@ -43,7 +44,7 @@ persistent:
     public:
       accessModes:
         - ReadWriteOnce
-      size: 256Mi
+      size: 512Mi
       path: /home/strapi/public
 podSecurityContext: {}
 securityContext: {}

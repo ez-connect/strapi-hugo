@@ -35,6 +35,24 @@
       },
       "default": "Frontend,JavaScript,Fressher"
     },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": ["Đà Nẵng", "Hà Nội", "Sài Gòn"]
+    },
+    "recommended": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false
+    },
     "content": {
       "type": "richtext",
       "pluginOptions": {
@@ -42,6 +60,14 @@
           "localized": true
         }
       }
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

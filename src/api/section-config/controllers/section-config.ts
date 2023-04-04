@@ -1,9 +1,9 @@
 /**
- * nested-section controller
+ * section-config controller
  */
 
 import { factories } from '@strapi/strapi';
 
 export default factories.createCoreController(
-  'api::nested-section.nested-section',
+  'api::section-config.section-config',
 );
