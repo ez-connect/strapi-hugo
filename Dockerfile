@@ -52,4 +52,5 @@ VOLUME /home/strapi/public
 
 EXPOSE 1337
 
-CMD npm start
+CMD mkdir -p /home/strapi/public/uploads/; \
+	npm start

@@ -7,55 +7,39 @@
 # Environments
 -include .makerc
 
-define get_base_config
-$(shell perl -nle 'print $$1 if /$1/' .config/service.base.yaml)
-endef
-
-define get_k8s_config
-$(shell perl -nle 'print lc $$1 if /$1/' .config/service.k8s.yaml)
+# Get the value from a key of an yaml file
+define get_yaml
+$(shell yq -r ".$1" ".config/service.$2.yaml")
 endef
 
 # Service
-NAME			= $(call get_base_config,name: (\S+))
-VERSION			= $(call get_base_config,version: (\S+))
-DESCRIPTION		= $(call get_base_config,description: (.+))
-README			= $(call get_base_config,readme: (\S+))
-NAMESPACE		?= $(call get_base_config,namespace: (\S+))
+NAME				= $(call get_yaml,name,base)
+VERSION				= $(call get_yaml,version,base)
+DESCRIPTION			= $(call get_yaml,description,base)
+README				= $(call get_yaml,readme,base)
 
 # Registry
-REGISTRY 		?= registry.gitlab.com
-REGISTRY_REPO 	?= free-mind/hub
-DOCKERFILE 		?= Dockerfile
-DEPLOYMENT_KIND	?= $(call get_k8s_config,kind: (\w+))
+REGISTRY			?= docker.io
+REGISTRY_REPO		?= ezconnect
+DOCKERFILE			?= Dockerfile
 
-ifeq ($(HELM_NAMESPACE),)
-ifneq ($(NAMESPACE),)
-	HELM_NAMESPACE	= $(NAMESPACE)
-else
-	HELM_NAMESPACE	= dev
-endif
-endif
+# Override the image & helm package names or the image tag
+RELEASE_NAME		= $(NAME)
+TAG					?= $(VERSION)
 
-# OCI
-ifndef IMAGE
-	ifneq ($(NAMESPACE),)
-		IMAGE	= $(NAMESPACE)-$(NAME)
-	else
-		IMAGE	= $(NAME)
-	endif
-endif
+DEPLOYMENT_KIND		?= $(call get_yaml,kind,k8s)
+HELM_REPO			?= freemind
+HELM_NAMESPACE		?= dev
 
-TAG				?= $(VERSION)
-
-# Lists all targets
+# lists all targets
 help:
-	@grep -B1 -E "^[a-zA-Z0-9_%-]+\:([^\=]|$$)" Makefile \
+	@grep -B1 -E "^[a-zA-Z0-9_%-]+:([^\=]|$$)" Makefile \
 		| grep -v -- -- \
 		| sed 'N;s/\n/###/' \
 		| sed -n 's/^#: \(.*\)###\(.*\):.*/\2###\1/p' \
 		| column -t -s '###'
 
-#: Removes untracked files from the working tree
+#: remove untracked files from the working tree
 clean:
 #	go clean -cache -testcache -modcache -x
 	gkgen clean $(arg)
@@ -87,24 +71,32 @@ build:
 # -----------------------------------------------------------------------------
 # OCI
 # -----------------------------------------------------------------------------
-#: Builds an OCI image using instructions in 'Dockerfile'
+#: build the image
 oci:
-	podman build -t $(IMAGE):$(VERSION) -f $(DOCKERFILE) $(args) \
+	podman build -t $(RELEASE_NAME):$(VERSION) -f $(DOCKERFILE) $(args) \
 		--annotation org.opencontainers.image.created="$(shell date -I'seconds')" \
 		--annotation org.opencontainers.image.description="$(DESCRIPTION)" \
 		--annotation io.artifacthub.package.readme-url="$(README)"
 
-#: Pushes an image to a specified location that defined in '.makerc'
+#: push an image to a specified location that defined in '.makerc'
 oci-push:
+ifdef REGISTRY_USER
+	podman login -u $(REGISTRY_USER) -p $(REGISTRY_PWD) $(REGISTRY)
+else
 	podman login $(REGISTRY)
-	podman push $(IMAGE):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(IMAGE):$(TAG)
+endif
+
+	podman push $(RELEASE_NAME):$(VERSION) $(REGISTRY)/$(REGISTRY_REPO)/$(RELEASE_NAME):$(TAG)
 
 # -----------------------------------------------------------------------------
 # Helm
 # -----------------------------------------------------------------------------
-#: Generates the Helm chart
+#: generate the Helm chart
 helm:
 	gkgen helm $(args)
+ifneq ($(NAME),$(RELEASE_NAME))
+	sed -i -e 's/name: $(NAME)/name: $(RELEASE_NAME)/' .chart/Chart.yaml
+endif
 	cp .config/service.k8s.yaml .chart/values.yaml
 ifneq ($(wildcard .chart/Chart.lock),)
 	rm .chart/Chart.lock
@@ -112,26 +104,34 @@ endif
 	helm dependency build .chart/
 	helm lint .chart/
 
-#: Render chart templates locally and write to '.chart/k8s.yaml'
+#: render chart templates locally and write to '.chart/k8s.yaml'
 pod: helm
-	helm template $(IMAGE) .chart/ > .chart/k8s.yaml
+	helm template $(RELEASE_NAME) .chart/ > .chart/k8s.yaml
 
-#: Uploads chart to the repo that defined in '.makerc'
+#: upload chart to the repo that defined in '.makerc'
 package: helm
 	helm cm-push .chart/ $(HELM_REPO)
 
-#: Installs the chart to a remote defined in '.makerc'
+#: install the chart to a remote defined in '.makerc'
 install:
-	helm repo update && helm install $(IMAGE) $(HELM_REPO)/$(IMAGE) -n $(HELM_NAMESPACE) --version $(VERSION) $(args)
+	helm repo update && helm install $(RELEASE_NAME) $(HELM_REPO)/$(RELEASE_NAME) -n $(HELM_NAMESPACE) --version $(VERSION) $(args)
 
-#: Upgrades the release to the current version of the chart
+#: upgrade the release to the current version of the chart
 upgrade:
-	helm repo update && helm upgrade $(IMAGE) $(HELM_REPO)/$(IMAGE) -n $(HELM_NAMESPACE) --version $(VERSION) $(args)
+	helm repo update && helm upgrade $(RELEASE_NAME) $(HELM_REPO)/$(RELEASE_NAME) -n $(HELM_NAMESPACE) --version $(VERSION) $(args)
 
-#: Restarts the release
+#: restart the release
 restart:
-	kubectl rollout restart $(DEPLOYMENT_KIND)/$(IMAGE) -n $(HELM_NAMESPACE) $(args)
+	kubectl rollout restart $(DEPLOYMENT_KIND)/$(RELEASE_NAME) -n $(HELM_NAMESPACE)
 
-#: Uninstalls the service
+#: uninstall the release
 uninstall:
-	helm uninstall $(IMAGE) -n $(HELM_NAMESPACE) $(args)
+	helm uninstall $(RELEASE_NAME) -n $(HELM_NAMESPACE)
+
+#: execute the release
+exec:
+	kubectl exec -it deployment/$(RELEASE_NAME) -n $(HELM_NAMESPACE) -- sh
+
+#: print the logs for the deployment
+logs:
+	kubectl logs deploy/$(RELEASE_NAME) -f -n $(HELM_NAMESPACE)

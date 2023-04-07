@@ -17,6 +17,7 @@ deployment:
     EMAIL_API_KEY: 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
     EMAIL_DEFAULT_FROM: noreply@ez-connect.net
     EMAIL_DEFAULT_REPLY_TO: noreply@ez-connect.net
+    JWT_SECRET: tobemodified
     TRANSFER_TOKEN_SALT: tobemodified
   command: []
   args: []
