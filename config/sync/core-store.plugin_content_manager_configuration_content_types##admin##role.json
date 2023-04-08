@@ -128,10 +128,6 @@
         "code",
         "description"
       ],
-      "editRelations": [
-        "users",
-        "permissions"
-      ],
       "edit": [
         [
           {

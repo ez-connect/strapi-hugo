@@ -6,10 +6,10 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
+      "pageSize": 20,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -106,16 +106,14 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "createdAt",
-        "description"
-      ],
       "edit": [
         [
           {
             "name": "title",
+            "size": 6
+          },
+          {
+            "name": "description",
             "size": 6
           }
         ],
@@ -130,15 +128,14 @@
             "name": "components",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "description",
-            "size": 6
-          }
         ]
       ],
-      "editRelations": []
+      "list": [
+        "id",
+        "title",
+        "description",
+        "updatedAt"
+      ]
     }
   },
   "type": "object",

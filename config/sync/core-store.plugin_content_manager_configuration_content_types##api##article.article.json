@@ -3,10 +3,10 @@
   "value": {
     "uid": "api::article.article",
     "settings": {
-      "bulkable": true,
+      "bulkable": false,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
+      "pageSize": 20,
       "mainField": "title",
       "defaultSortBy": "updatedAt",
       "defaultSortOrder": "DESC"
@@ -76,6 +76,20 @@
           "sortable": false
         }
       },
+      "recommended": {
+        "edit": {
+          "label": "recommended",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "recommended",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -106,24 +120,21 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "tags",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
             "name": "title",
             "size": 6
+          },
+          {
+            "name": "thumbnail",
+            "size": 6
           }
         ],
         [
           {
-            "name": "thumbnail",
-            "size": 6
+            "name": "recommended",
+            "size": 4
           },
           {
             "name": "tags",
@@ -137,7 +148,14 @@
           }
         ]
       ],
-      "editRelations": []
+      "list": [
+        "id",
+        "title",
+        "thumbnail",
+        "recommended",
+        "tags",
+        "updatedAt"
+      ]
     }
   },
   "type": "object",

@@ -127,9 +127,6 @@
         "subject",
         "role"
       ],
-      "editRelations": [
-        "role"
-      ],
       "edit": [
         [
           {

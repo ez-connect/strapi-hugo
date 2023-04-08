@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::about.intro",
+  "key": "plugin_content_manager_configuration_content_types::admin::api-token-permission",
   "value": {
-    "uid": "about.intro",
+    "uid": "admin::api-token-permission",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "action",
+      "defaultSortBy": "action",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,48 +16,63 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "title": {
-        "edit": {
-          "label": "title",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "subtitle": {
+      "action": {
         "edit": {
-          "label": "subtitle",
+          "label": "action",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "subtitle",
+          "label": "action",
           "searchable": true,
           "sortable": true
         }
       },
-      "videoEmbedURL": {
+      "token": {
         "edit": {
-          "label": "videoEmbedURL",
+          "label": "token",
           "description": "",
           "placeholder": "",
           "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "token",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "videoEmbedURL",
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
@@ -66,30 +81,19 @@
     "layouts": {
       "list": [
         "id",
-        "title",
-        "subtitle",
-        "videoEmbedURL"
+        "action",
+        "token",
+        "createdAt"
       ],
       "edit": [
         [
           {
-            "name": "title",
-            "size": 6
-          },
-          {
-            "name": "subtitle",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "videoEmbedURL",
+            "name": "action",
             "size": 6
           }
         ]
       ]
-    },
-    "isComponent": true
+    }
   },
   "type": "object",
   "environment": null,

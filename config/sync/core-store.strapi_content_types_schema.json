@@ -190,17 +190,20 @@
           "minLength": 6,
           "configurable": false,
           "required": false,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "resetPasswordToken": {
           "type": "string",
           "configurable": false,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "registrationToken": {
           "type": "string",
           "configurable": false,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "isActive": {
           "type": "boolean",
@@ -226,7 +229,8 @@
         "preferedLanguage": {
           "type": "string",
           "configurable": false,
-          "required": false
+          "required": false,
+          "searchable": false
         },
         "createdAt": {
           "type": "datetime"
@@ -307,17 +311,20 @@
             "minLength": 6,
             "configurable": false,
             "required": false,
-            "private": true
+            "private": true,
+            "searchable": false
           },
           "resetPasswordToken": {
             "type": "string",
             "configurable": false,
-            "private": true
+            "private": true,
+            "searchable": false
           },
           "registrationToken": {
             "type": "string",
             "configurable": false,
-            "private": true
+            "private": true,
+            "searchable": false
           },
           "isActive": {
             "type": "boolean",
@@ -343,7 +350,8 @@
           "preferedLanguage": {
             "type": "string",
             "configurable": false,
-            "required": false
+            "required": false,
+            "searchable": false
           }
         },
         "kind": "collectionType"
@@ -518,7 +526,8 @@
           "type": "string",
           "minLength": 1,
           "configurable": false,
-          "required": true
+          "required": true,
+          "unique": true
         },
         "description": {
           "type": "string",
@@ -531,17 +540,42 @@
           "type": "enumeration",
           "enum": [
             "read-only",
-            "full-access"
+            "full-access",
+            "custom"
           ],
           "configurable": false,
-          "required": false,
+          "required": true,
           "default": "read-only"
         },
         "accessKey": {
           "type": "string",
           "minLength": 1,
           "configurable": false,
-          "required": true
+          "required": true,
+          "searchable": false
+        },
+        "lastUsedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "permissions": {
+          "type": "relation",
+          "target": "admin::api-token-permission",
+          "relation": "oneToMany",
+          "mappedBy": "token",
+          "configurable": false,
+          "required": false
+        },
+        "expiresAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "lifespan": {
+          "type": "biginteger",
+          "configurable": false,
+          "required": false
         },
         "createdAt": {
           "type": "datetime"
@@ -594,7 +628,8 @@
             "type": "string",
             "minLength": 1,
             "configurable": false,
-            "required": true
+            "required": true,
+            "unique": true
           },
           "description": {
             "type": "string",
@@ -607,17 +642,42 @@
             "type": "enumeration",
             "enum": [
               "read-only",
-              "full-access"
+              "full-access",
+              "custom"
             ],
             "configurable": false,
-            "required": false,
+            "required": true,
             "default": "read-only"
           },
           "accessKey": {
             "type": "string",
             "minLength": 1,
             "configurable": false,
-            "required": true
+            "required": true,
+            "searchable": false
+          },
+          "lastUsedAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "permissions": {
+            "type": "relation",
+            "target": "admin::api-token-permission",
+            "relation": "oneToMany",
+            "mappedBy": "token",
+            "configurable": false,
+            "required": false
+          },
+          "expiresAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "lifespan": {
+            "type": "biginteger",
+            "configurable": false,
+            "required": false
           }
         },
         "kind": "collectionType"
@@ -628,6 +688,372 @@
       "uid": "admin::api-token",
       "plugin": "admin",
       "globalId": "AdminApiToken"
+    },
+    "admin::api-token-permission": {
+      "collectionName": "strapi_api_token_permissions",
+      "info": {
+        "name": "API Token Permission",
+        "description": "",
+        "singularName": "api-token-permission",
+        "pluralName": "api-token-permissions",
+        "displayName": "API Token Permission"
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true
+        },
+        "token": {
+          "configurable": false,
+          "type": "relation",
+          "relation": "manyToOne",
+          "inversedBy": "permissions",
+          "target": "admin::api-token"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "strapi_api_token_permissions",
+        "info": {
+          "name": "API Token Permission",
+          "description": "",
+          "singularName": "api-token-permission",
+          "pluralName": "api-token-permissions",
+          "displayName": "API Token Permission"
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "action": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true
+          },
+          "token": {
+            "configurable": false,
+            "type": "relation",
+            "relation": "manyToOne",
+            "inversedBy": "permissions",
+            "target": "admin::api-token"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "api-token-permission",
+      "connection": "default",
+      "uid": "admin::api-token-permission",
+      "plugin": "admin",
+      "globalId": "AdminApiTokenPermission"
+    },
+    "admin::transfer-token": {
+      "collectionName": "strapi_transfer_tokens",
+      "info": {
+        "name": "Transfer Token",
+        "singularName": "transfer-token",
+        "pluralName": "transfer-tokens",
+        "displayName": "Transfer Token",
+        "description": ""
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true,
+          "unique": true
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": false,
+          "default": ""
+        },
+        "accessKey": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true
+        },
+        "lastUsedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "permissions": {
+          "type": "relation",
+          "target": "admin::transfer-token-permission",
+          "relation": "oneToMany",
+          "mappedBy": "token",
+          "configurable": false,
+          "required": false
+        },
+        "expiresAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "lifespan": {
+          "type": "biginteger",
+          "configurable": false,
+          "required": false
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "strapi_transfer_tokens",
+        "info": {
+          "name": "Transfer Token",
+          "singularName": "transfer-token",
+          "pluralName": "transfer-tokens",
+          "displayName": "Transfer Token",
+          "description": ""
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true,
+            "unique": true
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": false,
+            "default": ""
+          },
+          "accessKey": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true
+          },
+          "lastUsedAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "permissions": {
+            "type": "relation",
+            "target": "admin::transfer-token-permission",
+            "relation": "oneToMany",
+            "mappedBy": "token",
+            "configurable": false,
+            "required": false
+          },
+          "expiresAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "lifespan": {
+            "type": "biginteger",
+            "configurable": false,
+            "required": false
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "transfer-token",
+      "connection": "default",
+      "uid": "admin::transfer-token",
+      "plugin": "admin",
+      "globalId": "AdminTransferToken"
+    },
+    "admin::transfer-token-permission": {
+      "collectionName": "strapi_transfer_token_permissions",
+      "info": {
+        "name": "Transfer Token Permission",
+        "description": "",
+        "singularName": "transfer-token-permission",
+        "pluralName": "transfer-token-permissions",
+        "displayName": "Transfer Token Permission"
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true
+        },
+        "token": {
+          "configurable": false,
+          "type": "relation",
+          "relation": "manyToOne",
+          "inversedBy": "permissions",
+          "target": "admin::transfer-token"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "strapi_transfer_token_permissions",
+        "info": {
+          "name": "Transfer Token Permission",
+          "description": "",
+          "singularName": "transfer-token-permission",
+          "pluralName": "transfer-token-permissions",
+          "displayName": "Transfer Token Permission"
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "action": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true
+          },
+          "token": {
+            "configurable": false,
+            "type": "relation",
+            "relation": "manyToOne",
+            "inversedBy": "permissions",
+            "target": "admin::transfer-token"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "transfer-token-permission",
+      "connection": "default",
+      "uid": "admin::transfer-token-permission",
+      "plugin": "admin",
+      "globalId": "AdminTransferTokenPermission"
     },
     "plugin::upload.file": {
       "collectionName": "files",
@@ -725,7 +1151,8 @@
           "type": "string",
           "min": 1,
           "required": true,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "createdAt": {
           "type": "datetime"
@@ -759,6 +1186,41 @@
           "name": "upload_files_folder_path_index",
           "columns": [
             "folder_path"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_created_at_index",
+          "columns": [
+            "created_at"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_updated_at_index",
+          "columns": [
+            "updated_at"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_name_index",
+          "columns": [
+            "name"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_size_index",
+          "columns": [
+            "size"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_ext_index",
+          "columns": [
+            "ext"
           ],
           "type": null
         }
@@ -860,7 +1322,8 @@
             "type": "string",
             "min": 1,
             "required": true,
-            "private": true
+            "private": true,
+            "searchable": false
           }
         },
         "kind": "collectionType"
@@ -1392,17 +1855,20 @@
           "type": "password",
           "minLength": 6,
           "configurable": false,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "resetPasswordToken": {
           "type": "string",
           "configurable": false,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "confirmationToken": {
           "type": "string",
           "configurable": false,
-          "private": true
+          "private": true,
+          "searchable": false
         },
         "confirmed": {
           "type": "boolean",
@@ -1497,17 +1963,20 @@
             "type": "password",
             "minLength": 6,
             "configurable": false,
-            "private": true
+            "private": true,
+            "searchable": false
           },
           "resetPasswordToken": {
             "type": "string",
             "configurable": false,
-            "private": true
+            "private": true,
+            "searchable": false
           },
           "confirmationToken": {
             "type": "string",
             "configurable": false,
-            "private": true
+            "private": true,
+            "searchable": false
           },
           "confirmed": {
             "type": "boolean",
@@ -1680,8 +2149,7 @@
       "info": {
         "singularName": "about",
         "pluralName": "abouts",
-        "displayName": "About",
-        "description": ""
+        "displayName": "About"
       },
       "options": {
         "draftAndPublish": true
@@ -1705,7 +2173,8 @@
             "about.company-introduction",
             "about.our-team",
             "site.contact-form",
-            "about.intro"
+            "about.intro",
+            "site.block"
           ]
         },
         "createdAt": {
@@ -1762,8 +2231,7 @@
         "info": {
           "singularName": "about",
           "pluralName": "abouts",
-          "displayName": "About",
-          "description": ""
+          "displayName": "About"
         },
         "options": {
           "draftAndPublish": true
@@ -1787,7 +2255,8 @@
               "about.company-introduction",
               "about.our-team",
               "site.contact-form",
-              "about.intro"
+              "about.intro",
+              "site.block"
             ]
           }
         },
@@ -2163,6 +2632,15 @@
             }
           }
         },
+        "recommended": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "boolean",
+          "default": false
+        },
         "tags": {
           "pluginOptions": {
             "i18n": {
@@ -2269,6 +2747,15 @@
               }
             }
           },
+          "recommended": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "boolean",
+            "default": false
+          },
           "tags": {
             "pluginOptions": {
               "i18n": {
@@ -2335,6 +2822,28 @@
           },
           "default": "Frontend,JavaScript,Fressher"
         },
+        "location": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "enumeration",
+          "enum": [
+            "Đà Nẵng",
+            "Hà Nội",
+            "Sài Gòn"
+          ]
+        },
+        "recommended": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "boolean",
+          "default": false
+        },
         "content": {
           "type": "richtext",
           "pluginOptions": {
@@ -2342,6 +2851,14 @@
               "localized": true
             }
           }
+        },
+        "description": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "text"
         },
         "createdAt": {
           "type": "datetime"
@@ -2428,6 +2945,28 @@
             },
             "default": "Frontend,JavaScript,Fressher"
           },
+          "location": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "enumeration",
+            "enum": [
+              "Đà Nẵng",
+              "Hà Nội",
+              "Sài Gòn"
+            ]
+          },
+          "recommended": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "boolean",
+            "default": false
+          },
           "content": {
             "type": "richtext",
             "pluginOptions": {
@@ -2435,6 +2974,14 @@
                 "localized": true
               }
             }
+          },
+          "description": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "text"
           }
         },
         "kind": "collectionType"
@@ -2544,13 +3091,18 @@
       "info": {
         "singularName": "contributor",
         "pluralName": "contributors",
-        "displayName": "Contributor"
+        "displayName": "Contributor",
+        "description": ""
       },
       "options": {
         "draftAndPublish": true,
         "populateCreatorFields": true
       },
-      "pluginOptions": {},
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "attributes": {
         "user": {
           "type": "relation",
@@ -2560,21 +3112,32 @@
         "title": {
           "pluginOptions": {
             "i18n": {
-              "localized": true
+              "localized": false
             }
           },
           "type": "string",
           "required": true
         },
         "avatar": {
+          "type": "media",
+          "multiple": false,
+          "required": false,
           "allowedTypes": [
             "images"
           ],
-          "type": "media",
-          "multiple": false
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          }
         },
         "content": {
-          "type": "richtext"
+          "type": "richtext",
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          }
         },
         "createdAt": {
           "type": "datetime"
@@ -2607,6 +3170,22 @@
           "visible": false,
           "useJoinTable": false,
           "private": false
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::contributor.contributor"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
         }
       },
       "__schema__": {
@@ -2614,13 +3193,18 @@
         "info": {
           "singularName": "contributor",
           "pluralName": "contributors",
-          "displayName": "Contributor"
+          "displayName": "Contributor",
+          "description": ""
         },
         "options": {
           "draftAndPublish": true,
           "populateCreatorFields": true
         },
-        "pluginOptions": {},
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
         "attributes": {
           "user": {
             "type": "relation",
@@ -2630,21 +3214,32 @@
           "title": {
             "pluginOptions": {
               "i18n": {
-                "localized": true
+                "localized": false
               }
             },
             "type": "string",
             "required": true
           },
           "avatar": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
             "allowedTypes": [
               "images"
             ],
-            "type": "media",
-            "multiple": false
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            }
           },
           "content": {
-            "type": "richtext"
+            "type": "richtext",
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            }
           }
         },
         "kind": "collectionType"
@@ -2686,13 +3281,18 @@
           "type": "string",
           "required": true
         },
-        "parent": {
+        "description": {
           "pluginOptions": {
             "i18n": {
-              "localized": false
+              "localized": true
             }
           },
-          "type": "string"
+          "type": "text"
+        },
+        "section": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "api::section.section"
         },
         "weight": {
           "pluginOptions": {
@@ -2702,22 +3302,6 @@
           },
           "type": "integer",
           "default": 99
-        },
-        "tags": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
-          "type": "string"
-        },
-        "isIndex": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
-          "type": "boolean"
         },
         "content": {
           "pluginOptions": {
@@ -2816,13 +3400,18 @@
             "type": "string",
             "required": true
           },
-          "parent": {
+          "description": {
             "pluginOptions": {
               "i18n": {
-                "localized": false
+                "localized": true
               }
             },
-            "type": "string"
+            "type": "text"
+          },
+          "section": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::section.section"
           },
           "weight": {
             "pluginOptions": {
@@ -2832,22 +3421,6 @@
             },
             "type": "integer",
             "default": 99
-          },
-          "tags": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
-            "type": "string"
-          },
-          "isIndex": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
-            "type": "boolean"
           },
           "content": {
             "pluginOptions": {
@@ -4085,7 +4658,7 @@
       "lifecycles": {}
     },
     "api::section.section": {
-      "kind": "singleType",
+      "kind": "collectionType",
       "collectionName": "sections",
       "info": {
         "singularName": "section",
@@ -4094,11 +4667,199 @@
         "description": ""
       },
       "options": {
-        "draftAndPublish": true
+        "draftAndPublish": true,
+        "populateCreatorFields": true
       },
       "pluginOptions": {
         "i18n": {
           "localized": true
+        }
+      },
+      "attributes": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          }
+        },
+        "description": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "text"
+        },
+        "path": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "string",
+          "default": "document/dev",
+          "required": true,
+          "unique": true
+        },
+        "weight": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          },
+          "type": "integer",
+          "default": 99
+        },
+        "content": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "richtext"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": false
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": false
+        },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::section.section"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        }
+      },
+      "__schema__": {
+        "collectionName": "sections",
+        "info": {
+          "singularName": "section",
+          "pluralName": "sections",
+          "displayName": "Section",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": true,
+          "populateCreatorFields": true
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "attributes": {
+          "title": {
+            "type": "string",
+            "required": true,
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            }
+          },
+          "description": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "text"
+          },
+          "path": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "string",
+            "default": "document/dev",
+            "required": true,
+            "unique": true
+          },
+          "weight": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": false
+              }
+            },
+            "type": "integer",
+            "default": 99
+          },
+          "content": {
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            },
+            "type": "richtext"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "section",
+      "connection": "default",
+      "uid": "api::section.section",
+      "apiName": "section",
+      "globalId": "Section",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::section-config.section-config": {
+      "kind": "singleType",
+      "collectionName": "section_configs",
+      "info": {
+        "singularName": "section-config",
+        "pluralName": "section-configs",
+        "displayName": "Section Config"
+      },
+      "options": {
+        "draftAndPublish": true
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true,
+          "populateCreatorFields": true
         }
       },
       "attributes": {
@@ -4174,7 +4935,7 @@
           "visible": false,
           "type": "relation",
           "relation": "oneToMany",
-          "target": "api::section.section"
+          "target": "api::section-config.section-config"
         },
         "locale": {
           "writable": true,
@@ -4185,19 +4946,19 @@
         }
       },
       "__schema__": {
-        "collectionName": "sections",
+        "collectionName": "section_configs",
         "info": {
-          "singularName": "section",
-          "pluralName": "sections",
-          "displayName": "Section",
-          "description": ""
+          "singularName": "section-config",
+          "pluralName": "section-configs",
+          "displayName": "Section Config"
         },
         "options": {
           "draftAndPublish": true
         },
         "pluginOptions": {
           "i18n": {
-            "localized": true
+            "localized": true,
+            "populateCreatorFields": true
           }
         },
         "attributes": {
@@ -4238,11 +4999,11 @@
         "kind": "singleType"
       },
       "modelType": "contentType",
-      "modelName": "section",
+      "modelName": "section-config",
       "connection": "default",
-      "uid": "api::section.section",
-      "apiName": "section",
-      "globalId": "Section",
+      "uid": "api::section-config.section-config",
+      "apiName": "section-config",
+      "globalId": "SectionConfig",
       "actions": {},
       "lifecycles": {}
     },
@@ -4252,13 +5013,17 @@
       "info": {
         "singularName": "share",
         "pluralName": "shares",
-        "displayName": "Share"
+        "displayName": "Share",
+        "description": ""
       },
       "options": {
         "draftAndPublish": false
       },
       "pluginOptions": {},
       "attributes": {
+        "title": {
+          "type": "uid"
+        },
         "content": {
           "type": "richtext"
         },
@@ -4294,13 +5059,17 @@
         "info": {
           "singularName": "share",
           "pluralName": "shares",
-          "displayName": "Share"
+          "displayName": "Share",
+          "description": ""
         },
         "options": {
           "draftAndPublish": false
         },
         "pluginOptions": {},
         "attributes": {
+          "title": {
+            "type": "uid"
+          },
           "content": {
             "type": "richtext"
           }

@@ -85,9 +85,6 @@
         "role",
         "createdAt"
       ],
-      "editRelations": [
-        "role"
-      ],
       "edit": [
         [
           {

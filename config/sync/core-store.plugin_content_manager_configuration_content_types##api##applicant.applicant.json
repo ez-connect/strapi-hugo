@@ -8,8 +8,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "name",
-      "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -135,22 +135,34 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "career",
+        "name",
+        "phone"
+      ],
       "edit": [
         [
           {
-            "name": "name",
+            "name": "career",
             "size": 6
           },
           {
-            "name": "phone",
+            "name": "name",
             "size": 6
           }
         ],
         [
           {
-            "name": "email",
+            "name": "phone",
             "size": 6
           },
+          {
+            "name": "email",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "cv",
             "size": 6
@@ -162,16 +174,6 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": [
-        "career"
-      ],
-      "list": [
-        "id",
-        "career",
-        "name",
-        "phone",
-        "updatedAt"
       ]
     }
   },

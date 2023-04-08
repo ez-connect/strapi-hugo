@@ -6,10 +6,10 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
+      "pageSize": 20,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -48,6 +48,34 @@
           "sortable": true
         }
       },
+      "location": {
+        "edit": {
+          "label": "location",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "location",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "recommended": {
+        "edit": {
+          "label": "recommended",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "recommended",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "content": {
         "edit": {
           "label": "content",
@@ -60,6 +88,20 @@
           "label": "content",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -92,11 +134,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "categories"
-      ],
       "edit": [
         [
           {
@@ -106,18 +143,41 @@
         ],
         [
           {
-            "name": "content",
+            "name": "categories",
+            "size": 6
+          },
+          {
+            "name": "location",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
             "size": 12
           }
         ],
         [
           {
-            "name": "categories",
-            "size": 6
+            "name": "recommended",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "content",
+            "size": 12
           }
         ]
       ],
-      "editRelations": []
+      "list": [
+        "id",
+        "title",
+        "categories",
+        "location",
+        "recommended",
+        "updatedAt"
+      ]
     }
   },
   "type": "object",

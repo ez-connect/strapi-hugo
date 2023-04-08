@@ -3,12 +3,12 @@
   "value": {
     "uid": "api::section.section",
     "settings": {
-      "bulkable": true,
+      "bulkable": false,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "pageSize": 20,
+      "mainField": "title",
+      "defaultSortBy": "updatedAt",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,44 +20,72 @@
           "sortable": true
         }
       },
-      "document": {
+      "title": {
         "edit": {
-          "label": "document",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "document",
-          "searchable": false,
-          "sortable": false
+          "label": "title",
+          "searchable": true,
+          "sortable": true
         }
       },
-      "article": {
+      "description": {
         "edit": {
-          "label": "article",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "article",
-          "searchable": false,
-          "sortable": false
+          "label": "description",
+          "searchable": true,
+          "sortable": true
         }
       },
-      "career": {
+      "path": {
         "edit": {
-          "label": "career",
+          "label": "path",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "career",
+          "label": "path",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "weight": {
+        "edit": {
+          "label": "weight",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "weight",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "content",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
           "searchable": false,
           "sortable": false
         }
@@ -92,30 +120,41 @@
       }
     },
     "layouts": {
-      "list": [
-        "id"
-      ],
       "edit": [
         [
           {
-            "name": "document",
-            "size": 12
+            "name": "title",
+            "size": 6
+          },
+          {
+            "name": "description",
+            "size": 6
           }
         ],
         [
           {
-            "name": "article",
-            "size": 12
+            "name": "path",
+            "size": 6
+          },
+          {
+            "name": "weight",
+            "size": 4
           }
         ],
         [
           {
-            "name": "career",
+            "name": "content",
             "size": 12
           }
         ]
       ],
-      "editRelations": []
+      "list": [
+        "id",
+        "title",
+        "path",
+        "weight",
+        "updatedAt"
+      ]
     }
   },
   "type": "object",

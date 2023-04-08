@@ -76,6 +76,63 @@
           "sortable": true
         }
       },
+      "lastUsedAt": {
+        "edit": {
+          "label": "lastUsedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lastUsedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "permissions": {
+        "edit": {
+          "label": "permissions",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "action"
+        },
+        "list": {
+          "label": "permissions",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "expiresAt": {
+        "edit": {
+          "label": "expiresAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "expiresAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lifespan": {
+        "edit": {
+          "label": "lifespan",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lifespan",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -112,7 +169,6 @@
         "description",
         "type"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -132,6 +188,22 @@
           {
             "name": "accessKey",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "lastUsedAt",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "expiresAt",
+            "size": 6
+          },
+          {
+            "name": "lifespan",
+            "size": 4
           }
         ]
       ]

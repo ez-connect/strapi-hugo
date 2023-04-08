@@ -9,7 +9,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -19,7 +20,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -29,58 +31,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::applicant.applicant",
-      "properties": {
-        "fields": [
-          "career",
-          "name",
-          "phone",
-          "email",
-          "cv",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::applicant.applicant",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::applicant.applicant",
-      "properties": {
-        "fields": [
-          "career",
-          "name",
-          "phone",
-          "email",
-          "cv",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::applicant.applicant",
-      "properties": {
-        "fields": [
-          "career",
-          "name",
-          "phone",
-          "email",
-          "cv",
-          "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -93,7 +45,8 @@
           "thumbnail",
           "tags",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -106,7 +59,8 @@
           "thumbnail",
           "tags",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -119,7 +73,8 @@
           "thumbnail",
           "tags",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -130,7 +85,8 @@
         "fields": [
           "title",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -141,7 +97,8 @@
         "fields": [
           "title",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -152,52 +109,8 @@
         "fields": [
           "title",
           "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "phone",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::contact.contact",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "phone",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "phone",
-          "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -210,7 +123,8 @@
           "title",
           "avatar",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -223,7 +137,8 @@
           "title",
           "avatar",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -236,7 +151,8 @@
           "title",
           "avatar",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -246,13 +162,11 @@
       "properties": {
         "fields": [
           "title",
-          "parent",
           "weight",
-          "tags",
-          "isIndex",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -262,13 +176,11 @@
       "properties": {
         "fields": [
           "title",
-          "parent",
           "weight",
-          "tags",
-          "isIndex",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -278,13 +190,11 @@
       "properties": {
         "fields": [
           "title",
-          "parent",
           "weight",
-          "tags",
-          "isIndex",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -294,7 +204,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -304,7 +215,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -314,7 +226,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -326,7 +239,8 @@
           "title",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -338,7 +252,8 @@
           "title",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -350,7 +265,8 @@
           "title",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -363,7 +279,8 @@
           "description",
           "thumbnail",
           "video"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -376,7 +293,8 @@
           "description",
           "thumbnail",
           "video"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -389,7 +307,8 @@
           "description",
           "thumbnail",
           "video"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -428,7 +347,8 @@
           "awards.date",
           "languages.name",
           "languages.level"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -467,7 +387,8 @@
           "awards.date",
           "languages.name",
           "languages.level"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -506,7 +427,8 @@
           "awards.date",
           "languages.name",
           "languages.level"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -516,7 +438,8 @@
       "properties": {
         "fields": [
           "title"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -526,7 +449,8 @@
       "properties": {
         "fields": [
           "title"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },
@@ -536,7 +460,8 @@
       "properties": {
         "fields": [
           "title"
-        ]
+        ],
+        "locales": []
       },
       "conditions": []
     },

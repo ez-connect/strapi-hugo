@@ -8,8 +8,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "topics",
-      "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "defaultSortBy": "topics",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -106,6 +106,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "topics",
+        "subject",
+        "templateId"
+      ],
       "edit": [
         [
           {
@@ -127,15 +133,6 @@
             "size": 6
           }
         ]
-      ],
-      "editRelations": [],
-      "list": [
-        "id",
-        "templateId",
-        "topics",
-        "subject",
-        "event",
-        "updatedAt"
       ]
     }
   },

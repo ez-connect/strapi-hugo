@@ -183,9 +183,6 @@
         "email",
         "confirmed"
       ],
-      "editRelations": [
-        "role"
-      ],
       "edit": [
         [
           {

@@ -211,9 +211,6 @@
         "lastname",
         "username"
       ],
-      "editRelations": [
-        "roles"
-      ],
       "edit": [
         [
           {

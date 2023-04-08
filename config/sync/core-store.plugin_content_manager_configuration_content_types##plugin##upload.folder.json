@@ -143,11 +143,6 @@
         "pathId",
         "parent"
       ],
-      "editRelations": [
-        "parent",
-        "children",
-        "files"
-      ],
       "edit": [
         [
           {

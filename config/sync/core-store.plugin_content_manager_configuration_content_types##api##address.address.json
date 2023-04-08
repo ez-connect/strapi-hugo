@@ -150,12 +150,16 @@
     "layouts": {
       "list": [
         "id",
+        "office",
         "email",
-        "facebook",
-        "office"
+        "facebook"
       ],
       "edit": [
         [
+          {
+            "name": "office",
+            "size": 6
+          },
           {
             "name": "email",
             "size": 6
@@ -185,14 +189,9 @@
           {
             "name": "youtube",
             "size": 6
-          },
-          {
-            "name": "office",
-            "size": 6
           }
         ]
-      ],
-      "editRelations": []
+      ]
     }
   },
   "type": "object",

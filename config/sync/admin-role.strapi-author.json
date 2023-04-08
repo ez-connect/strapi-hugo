@@ -9,7 +9,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -21,7 +22,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -33,66 +35,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::applicant.applicant",
-      "properties": {
-        "fields": [
-          "career",
-          "name",
-          "phone",
-          "email",
-          "cv",
-          "content"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::applicant.applicant",
-      "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::applicant.applicant",
-      "properties": {
-        "fields": [
-          "career",
-          "name",
-          "phone",
-          "email",
-          "cv",
-          "content"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::applicant.applicant",
-      "properties": {
-        "fields": [
-          "career",
-          "name",
-          "phone",
-          "email",
-          "cv",
-          "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -107,7 +51,8 @@
           "thumbnail",
           "tags",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -122,7 +67,8 @@
           "thumbnail",
           "tags",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -137,7 +83,8 @@
           "thumbnail",
           "tags",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -150,7 +97,8 @@
         "fields": [
           "title",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -163,7 +111,8 @@
         "fields": [
           "title",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -176,60 +125,8 @@
         "fields": [
           "title",
           "content"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "phone",
-          "content"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::contact.contact",
-      "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "phone",
-          "content"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "phone",
-          "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -244,7 +141,8 @@
           "title",
           "avatar",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -259,7 +157,8 @@
           "title",
           "avatar",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -274,7 +173,8 @@
           "title",
           "avatar",
           "content"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -286,13 +186,11 @@
       "properties": {
         "fields": [
           "title",
-          "parent",
           "weight",
-          "tags",
-          "isIndex",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -304,13 +202,11 @@
       "properties": {
         "fields": [
           "title",
-          "parent",
           "weight",
-          "tags",
-          "isIndex",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -322,13 +218,11 @@
       "properties": {
         "fields": [
           "title",
-          "parent",
           "weight",
-          "tags",
-          "isIndex",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -340,7 +234,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -352,7 +247,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -364,7 +260,8 @@
       "properties": {
         "fields": [
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -378,7 +275,8 @@
           "title",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -392,7 +290,8 @@
           "title",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -406,7 +305,8 @@
           "title",
           "content",
           "components"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -421,7 +321,8 @@
           "description",
           "thumbnail",
           "video"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -436,7 +337,8 @@
           "description",
           "thumbnail",
           "video"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -451,7 +353,8 @@
           "description",
           "thumbnail",
           "video"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -492,7 +395,8 @@
           "awards.date",
           "languages.name",
           "languages.level"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -533,7 +437,8 @@
           "awards.date",
           "languages.name",
           "languages.level"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -574,7 +479,8 @@
           "awards.date",
           "languages.name",
           "languages.level"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -586,7 +492,8 @@
       "properties": {
         "fields": [
           "title"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -598,7 +505,8 @@
       "properties": {
         "fields": [
           "title"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"
@@ -610,7 +518,8 @@
       "properties": {
         "fields": [
           "title"
-        ]
+        ],
+        "locales": []
       },
       "conditions": [
         "admin::is-creator"

@@ -9,7 +9,7 @@
       "pageSize": 10,
       "mainField": "name",
       "defaultSortBy": "name",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -106,13 +106,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "email",
-        "phone"
-      ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -134,6 +127,13 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "email",
+        "phone",
+        "updatedAt"
       ]
     }
   },

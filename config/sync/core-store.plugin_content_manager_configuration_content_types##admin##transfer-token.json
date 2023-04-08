@@ -1,15 +1,15 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::document.document",
+  "key": "plugin_content_manager_configuration_content_types::admin::transfer-token",
   "value": {
-    "uid": "api::document.document",
+    "uid": "admin::transfer-token",
     "settings": {
-      "bulkable": false,
+      "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 20,
-      "mainField": "title",
-      "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -20,16 +20,16 @@
           "sortable": true
         }
       },
-      "title": {
+      "name": {
         "edit": {
-          "label": "title",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -48,61 +48,75 @@
           "sortable": true
         }
       },
-      "section": {
+      "accessKey": {
         "edit": {
-          "label": "section",
+          "label": "accessKey",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "accessKey",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lastUsedAt": {
+        "edit": {
+          "label": "lastUsedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lastUsedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "permissions": {
+        "edit": {
+          "label": "permissions",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "action"
         },
         "list": {
-          "label": "section",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "weight": {
-        "edit": {
-          "label": "weight",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "weight",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "content": {
-        "edit": {
-          "label": "content",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "content",
+          "label": "permissions",
           "searchable": false,
           "sortable": false
         }
       },
-      "components": {
+      "expiresAt": {
         "edit": {
-          "label": "components",
+          "label": "expiresAt",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "components",
-          "searchable": false,
-          "sortable": false
+          "label": "expiresAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lifespan": {
+        "edit": {
+          "label": "lifespan",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lifespan",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -135,14 +149,18 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "description",
+        "accessKey"
+      ],
       "edit": [
         [
           {
-            "name": "title",
+            "name": "name",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "description",
             "size": 6
@@ -150,33 +168,30 @@
         ],
         [
           {
-            "name": "section",
+            "name": "accessKey",
             "size": 6
           },
           {
-            "name": "weight",
+            "name": "lastUsedAt",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "permissions",
+            "size": 6
+          },
+          {
+            "name": "expiresAt",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "lifespan",
             "size": 4
           }
-        ],
-        [
-          {
-            "name": "content",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "components",
-            "size": 12
-          }
         ]
-      ],
-      "list": [
-        "id",
-        "section",
-        "title",
-        "description",
-        "updatedAt"
       ]
     }
   },

@@ -1,6 +1,6 @@
 FROM docker.io/node:lts-alpine
 
-ARG version=0.4.0
+ARG version=0.4
 
 ENV HOST=0.0.0.0
 ENV PORT=1337

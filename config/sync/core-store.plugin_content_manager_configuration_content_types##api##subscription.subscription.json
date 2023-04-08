@@ -6,10 +6,10 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
+      "pageSize": 20,
       "mainField": "topics",
-      "defaultSortBy": "topics",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -78,12 +78,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "email",
-        "topics",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -96,7 +90,12 @@
           }
         ]
       ],
-      "editRelations": []
+      "list": [
+        "id",
+        "email",
+        "topics",
+        "updatedAt"
+      ]
     }
   },
   "type": "object",
