@@ -31,26 +31,16 @@ ENV NODE_ENV=production
 
 WORKDIR /home/strapi
 
-RUN set -ex; \
-	# Download source
-	wget -O /tmp/strapi-hugo.zip https://github.com/ez-connect/strapi-hugo/archive/refs/heads/v${version}.zip; \
-	unzip /tmp/strapi-hugo.zip -d /tmp; \
-	mv /tmp/strapi-hugo-${version}/* .; \
-	# Cleanup
-	rm /tmp/strapi-hugo.zip; \
-	rm -rf /tmp/strapi-hugo-${version}; \
-	# Install packages
-	npm ci; \
-	# Build the admin panel
-	npm run build; \
-	chown -R nobody:nogroup /home
+COPY . .
 
-WORKDIR /home/strapi
+RUN set -ex; \
+	npm ci; \
+	npm run build; \
+	chown -R nobody:nogroup /home;
 
 VOLUME /home/strapi/.tmp
 VOLUME /home/strapi/public
 
 EXPOSE 1337
 
-CMD mkdir -p /home/strapi/public/uploads/; \
-	npm start
+CMD ["npm", "start"]

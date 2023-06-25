@@ -1,7 +1,7 @@
 {
-  "name": "hugo-theme-cms",
+  "name": "strapi-hugo",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A Strapi application",
   "scripts": {
     "patch-update": "npx patch-package strapi-plugin-wysiwsg-react-md-editor",

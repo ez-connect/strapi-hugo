@@ -30,7 +30,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -85,22 +87,6 @@
       },
       "type": "richtext"
     },
-    "interest": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
     "socials": {
       "type": "component",
       "repeatable": true,
@@ -120,6 +106,16 @@
         }
       },
       "component": "resume.experience"
+    },
+    "projects": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "resume.project"
     },
     "skills": {
       "type": "component",
@@ -150,6 +146,14 @@
         }
       },
       "component": "resume.award"
+    },
+    "interest": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     },
     "languages": {
       "type": "component",
